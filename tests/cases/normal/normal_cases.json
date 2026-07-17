@@ -1,0 +1,264 @@
+{
+  "cases": [
+    {
+      "id": "CC-N001",
+      "scene": "内容创作",
+      "name": "小红书海报生成-正常",
+      "input": {
+        "content_type": "poster",
+        "keywords": "共享充电宝 夏日促销",
+        "platform": "xiaohongshu",
+        "brand_style": "科技感"
+      },
+      "expected": {
+        "output_type": "image",
+        "resolution": ">=1242x1660"
+      },
+      "type": "normal"
+    },
+    {
+      "id": "CC-N002",
+      "scene": "内容创作",
+      "name": "公众号推文生成-正常",
+      "input": {
+        "content_type": "article",
+        "keywords": "共享充电宝 行业趋势 2026",
+        "platform": "wechat"
+      },
+      "expected": {
+        "output_type": "text",
+        "word_count": "1500-2000"
+      },
+      "type": "normal"
+    },
+    {
+      "id": "TM-N001",
+      "scene": "流量监测",
+      "name": "单平台数据采集-正常",
+      "input": {
+        "task": "fetch_platform",
+        "platform": "wechat",
+        "time_range": "today"
+      },
+      "expected": {
+        "has_metrics": true,
+        "fields": [
+          "impressions",
+          "clicks",
+          "gmv"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "TM-N002",
+      "scene": "流量监测",
+      "name": "日报生成-正常",
+      "input": {
+        "task": "generate_report",
+        "time_range": "yesterday"
+      },
+      "expected": {
+        "has_report": true,
+        "platform_count": ">=14"
+      },
+      "type": "normal"
+    },
+    {
+      "id": "CA-N001",
+      "scene": "竞品分析",
+      "name": "竞品信息采集-正常",
+      "input": {
+        "competitor": "竞品科技A",
+        "dimensions": [
+          "产品规格",
+          "定价"
+        ]
+      },
+      "expected": {
+        "has_data": true,
+        "dimensions_covered": 2
+      },
+      "type": "normal"
+    },
+    {
+      "id": "CS-N001",
+      "scene": "客服",
+      "name": "FAQ回复-正常",
+      "input": {
+        "query": "产品保修期多久？",
+        "customer_type": "business"
+      },
+      "expected": {
+        "answer_contains": [
+          "12个月",
+          "保修"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "CS-N002",
+      "scene": "客服",
+      "name": "技术问题排查-正常",
+      "input": {
+        "query": "充电宝无法开机怎么办？",
+        "customer_type": "technical"
+      },
+      "expected": {
+        "answer_contains": [
+          "复位键",
+          "技术支持"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "SE-N001",
+      "scene": "销售专家",
+      "name": "客户犹豫场景-正常",
+      "input": {
+        "scenario": "客户犹豫不决",
+        "customer_context": "客户对20000mAh和10000mAh两款犹豫"
+      },
+      "expected": {
+        "has_advice": true,
+        "contains": [
+          "推荐"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "CM-N001",
+      "scene": "客户管理",
+      "name": "客户分析-正常",
+      "input": {
+        "task": "analyze_customer",
+        "customer_id": "C0001"
+      },
+      "expected": {
+        "has_profile": true,
+        "has_analysis": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "DA-N001",
+      "scene": "沉睡客户激活",
+      "name": "沉睡客户识别-正常",
+      "input": {
+        "task": "identify_dormant",
+        "threshold_days": 365
+      },
+      "expected": {
+        "customer_list": true,
+        "has_dormant": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "RD-N001",
+      "scene": "研发服务",
+      "name": "产品参数查询-正常",
+      "input": {
+        "query": "C200充电宝的充电协议是什么？"
+      },
+      "expected": {
+        "answer_contains": [
+          "PD3.0",
+          "QC3.0"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "ODM-N001",
+      "scene": "ODM需求调研",
+      "name": "需求问卷生成-正常",
+      "input": {
+        "task": "generate_questionnaire",
+        "product_type": "充电宝"
+      },
+      "expected": {
+        "has_questionnaire": true,
+        "fields_count": ">=5"
+      },
+      "type": "normal"
+    },
+    {
+      "id": "PM-N001",
+      "scene": "项目管理",
+      "name": "全项目看板-正常",
+      "input": {
+        "task": "overview_dashboard"
+      },
+      "expected": {
+        "has_projects": true,
+        "has_progress": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "KB-N001",
+      "scene": "知识库",
+      "name": "硬件知识检索-正常",
+      "input": {
+        "query": "外壳壁厚应该设计多少？"
+      },
+      "expected": {
+        "answer_contains": [
+          "2.0",
+          "2.5mm"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "AD-N001",
+      "scene": "行政助手",
+      "name": "制度查询-正常",
+      "input": {
+        "query": "年假天数怎么算？"
+      },
+      "expected": {
+        "answer_contains": [
+          "年假"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "MK-N001",
+      "scene": "物料齐套",
+      "name": "BOM欠料查询-正常",
+      "input": {
+        "project_id": "P001"
+      },
+      "expected": {
+        "has_materials": true,
+        "status_fields": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "PR-N001",
+      "scene": "采购分析",
+      "name": "物料需求合并-正常",
+      "input": {
+        "task": "merge_requirements",
+        "orders": [
+          "ORD0001",
+          "ORD0002"
+        ]
+      },
+      "expected": {
+        "has_merged": true,
+        "total_qty": ">0"
+      },
+      "type": "normal"
+    }
+  ],
+  "total": 17,
+  "type": "normal"
+}

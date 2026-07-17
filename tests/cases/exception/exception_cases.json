@@ -1,0 +1,138 @@
+{
+  "cases": [
+    {
+      "id": "CC-E001",
+      "scene": "内容创作",
+      "name": "AI服务超时",
+      "input": {
+        "content_type": "poster",
+        "keywords": "测试",
+        "platform": "xiaohongshu"
+      },
+      "mock_scenario": "api_timeout",
+      "expected": {
+        "error": true,
+        "code": "SERVICE_TIMEOUT",
+        "fallback": "请稍后重试"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "CC-E002",
+      "scene": "内容创作",
+      "name": "图片生成失败",
+      "input": {
+        "content_type": "poster",
+        "keywords": "测试",
+        "platform": "xiaohongshu"
+      },
+      "mock_scenario": "generate_failure",
+      "expected": {
+        "error": true,
+        "code": "GENERATION_FAILED",
+        "fallback": "请检查参数后重试"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "TM-E001",
+      "scene": "流量监测",
+      "name": "平台API不可用",
+      "input": {
+        "task": "fetch_platform",
+        "platform": "wechat",
+        "time_range": "today"
+      },
+      "mock_scenario": "api_unavailable",
+      "expected": {
+        "error": true,
+        "code": "API_UNAVAILABLE",
+        "fallback": "使用缓存数据"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "CS-E001",
+      "scene": "客服",
+      "name": "知识库无匹配",
+      "input": {
+        "query": "一个非常特殊的问题没有任何匹配",
+        "customer_type": "technical"
+      },
+      "mock_scenario": "no_match",
+      "expected": {
+        "error": false,
+        "fallback": "转人工"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "DA-E001",
+      "scene": "沉睡客户激活",
+      "name": "黑云系统不可用",
+      "input": {
+        "task": "identify_dormant",
+        "threshold_days": 365
+      },
+      "mock_scenario": "heiyun_down",
+      "expected": {
+        "error": true,
+        "code": "DATA_SOURCE_UNAVAILABLE",
+        "fallback": "使用缓存数据"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "MK-E001",
+      "scene": "物料齐套",
+      "name": "BOM数据格式异常",
+      "input": {
+        "project_id": "P001"
+      },
+      "mock_scenario": "data_format_error",
+      "expected": {
+        "error": true,
+        "code": "DATA_FORMAT_ERROR",
+        "fallback": "请检查数据源"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "PR-E001",
+      "scene": "采购分析",
+      "name": "库存数据缺失",
+      "input": {
+        "task": "merge_requirements",
+        "orders": [
+          "ORD0001"
+        ]
+      },
+      "mock_scenario": "missing_inventory",
+      "expected": {
+        "error": false,
+        "warning": "部分库存数据缺失",
+        "fallback": "使用预估数据"
+      },
+      "type": "exception"
+    },
+    {
+      "id": "PM-E001",
+      "scene": "项目管理",
+      "name": "并发更新冲突",
+      "input": {
+        "task": "update_progress",
+        "project_id": "P001",
+        "progress": 50
+      },
+      "mock_scenario": "concurrent_update",
+      "expected": {
+        "error": true,
+        "code": "CONCURRENT_UPDATE",
+        "fallback": "刷新后重试"
+      },
+      "type": "exception"
+    }
+  ],
+  "total": 8,
+  "type": "exception"
+}

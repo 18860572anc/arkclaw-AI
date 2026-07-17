@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CustomerSchema",
+  "description": "客户数据Schema",
+  "type": "object",
+  "required": ["customers"],
+  "properties": {
+    "customers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "industry", "last_order_date", "total_orders", "is_dormant"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^C\\d{4}$" },
+          "name": { "type": "string" },
+          "industry": { "type": "string" },
+          "last_order_date": { "type": "string", "format": "date" },
+          "total_orders": { "type": "integer", "minimum": 0 },
+          "total_amount": { "type": "number", "minimum": 0 },
+          "is_dormant": { "type": "boolean" },
+          "assigned_sales": { "type": "string" }
+        }
+      }
+    }
+  }
+}

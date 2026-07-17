@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "id": "M001",
+      "name": "锂电池组(18650)",
+      "stock": 5000,
+      "reserved": 2000,
+      "available": 3000,
+      "warehouse": "深圳仓",
+      "min_stock": 1000
+    },
+    {
+      "id": "M002",
+      "name": "PCBA主板(V3.2)",
+      "stock": 3000,
+      "reserved": 2500,
+      "available": 500,
+      "warehouse": "深圳仓",
+      "min_stock": 500
+    },
+    {
+      "id": "M003",
+      "name": "外壳上盖(黑色)",
+      "stock": 2000,
+      "reserved": 1500,
+      "available": 500,
+      "warehouse": "深圳仓",
+      "min_stock": 300
+    },
+    {
+      "id": "M004",
+      "name": "USB-C接口",
+      "stock": 10000,
+      "reserved": 3000,
+      "available": 7000,
+      "warehouse": "深圳仓",
+      "min_stock": 2000
+    },
+    {
+      "id": "M005",
+      "name": "包装盒",
+      "stock": 8000,
+      "reserved": 4000,
+      "available": 4000,
+      "warehouse": "深圳仓",
+      "min_stock": 1000
+    }
+  ],
+  "total": 5
+}

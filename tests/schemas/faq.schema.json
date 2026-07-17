@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FAQSchema",
+  "description": "FAQ知识库数据Schema",
+  "type": "object",
+  "required": ["faq"],
+  "properties": {
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "answer", "category", "tags"],
+        "properties": {
+          "question": { "type": "string", "minLength": 1 },
+          "answer": { "type": "string", "minLength": 1 },
+          "category": { "type": "string", "enum": ["product", "tech", "sales", "after_sale", "company"] },
+          "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

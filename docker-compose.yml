@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Mock API 服务
+  mock-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: beste-mock-api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+      - ./scripts:/app/scripts
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - beste-network
+
+  # LanceDB 向量数据库
+  lancedb:
+    image: lancedb/lancedb:latest
+    container_name: beste-lancedb
+    volumes:
+      - ./data/mock/vector-data:/data
+      - ./data/source:/data/source
+    ports:
+      - "8000:8000"
+    networks:
+      - beste-network
+
+  # 浏览器自动化环境
+  browser:
+    image: browserless/chrome:latest
+    container_name: beste-browser
+    ports:
+      - "3000:3000"
+    environment:
+      - CONNECTION_TIMEOUT=60000
+      - MAX_CONCURRENT_SESSIONS=10
+      - PREBOOT_CHROME=true
+    networks:
+      - beste-network
+
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: beste-nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - mock-api
+    networks:
+      - beste-network
+
+networks:
+  beste-network:
+    driver: bridge

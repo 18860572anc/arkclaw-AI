@@ -1,0 +1,87 @@
+{
+  "boms": [
+    {
+      "project_id": "P001",
+      "materials": [
+        {
+          "id": "M001",
+          "name": "锂电池组",
+          "spec": "18650-2600mAh",
+          "qty": 100,
+          "unit": "个",
+          "delivery_date": "2026-08-15",
+          "status": "in_transit"
+        },
+        {
+          "id": "M002",
+          "name": "PCBA主板",
+          "spec": "V3.2",
+          "qty": 100,
+          "unit": "片",
+          "delivery_date": "2026-08-10",
+          "status": "arrived"
+        },
+        {
+          "id": "M003",
+          "name": "外壳上盖",
+          "spec": "PC+ABS-黑色",
+          "qty": 100,
+          "unit": "个",
+          "delivery_date": "2026-08-20",
+          "status": "pending"
+        },
+        {
+          "id": "M004",
+          "name": "外壳底盖",
+          "spec": "PC+ABS-黑色",
+          "qty": 100,
+          "unit": "个",
+          "delivery_date": "2026-08-20",
+          "status": "pending"
+        },
+        {
+          "id": "M005",
+          "name": "USB-C接口",
+          "spec": "母座-沉板",
+          "qty": 100,
+          "unit": "个",
+          "delivery_date": "2026-08-12",
+          "status": "arrived"
+        }
+      ]
+    },
+    {
+      "project_id": "P002",
+      "materials": [
+        {
+          "id": "M006",
+          "name": "锂电池组",
+          "spec": "21700-5000mAh",
+          "qty": 200,
+          "unit": "个",
+          "delivery_date": "2026-08-25",
+          "status": "pending"
+        },
+        {
+          "id": "M007",
+          "name": "PCBA主板",
+          "spec": "V4.0",
+          "qty": 200,
+          "unit": "片",
+          "delivery_date": "2026-08-20",
+          "status": "in_transit"
+        },
+        {
+          "id": "M008",
+          "name": "无线充电线圈",
+          "spec": "Qi标准",
+          "qty": 200,
+          "unit": "个",
+          "delivery_date": "2026-08-30",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "total": 2
+}

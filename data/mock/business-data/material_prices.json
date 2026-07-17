@@ -1,0 +1,53 @@
+{
+  "materials": [
+    {
+      "name": "锂电池(18650)",
+      "unit": "元/个",
+      "current_price": 12.5,
+      "price_change_3m": "+15%",
+      "trend": "up",
+      "supply_status": "紧张"
+    },
+    {
+      "name": "内存芯片",
+      "unit": "元/片",
+      "current_price": 8.2,
+      "price_change_3m": "+35%",
+      "trend": "up",
+      "supply_status": "紧缺"
+    },
+    {
+      "name": "电感",
+      "unit": "元/个",
+      "current_price": 0.35,
+      "price_change_3m": "+5%",
+      "trend": "stable",
+      "supply_status": "充足"
+    },
+    {
+      "name": "电容",
+      "unit": "元/个",
+      "current_price": 0.15,
+      "price_change_3m": "+10%",
+      "trend": "up",
+      "supply_status": "充足"
+    },
+    {
+      "name": "PCBA板材",
+      "unit": "元/平方米",
+      "current_price": 85,
+      "price_change_3m": "-3%",
+      "trend": "down",
+      "supply_status": "充足"
+    },
+    {
+      "name": "USB-C接口",
+      "unit": "元/个",
+      "current_price": 0.8,
+      "price_change_3m": "+2%",
+      "trend": "stable",
+      "supply_status": "充足"
+    }
+  ],
+  "total": 6
+}

@@ -1,0 +1,91 @@
+{
+  "name": "倍斯特科技股份有限公司",
+  "founded_year": 2008,
+  "founded_date": "2008-05-27",
+  "industry": "共享充电宝/充电柜研发制造",
+  "employees": 500,
+  "offices": [
+    "深圳总部",
+    "江苏工厂",
+    "广西工厂"
+  ],
+  "products": [
+    {
+      "name": "C100充电宝",
+      "capacity": "10000mAh",
+      "output": "5V/2A",
+      "protocol": "QC3.0",
+      "weight": "200g",
+      "waterproof": "IPX4"
+    },
+    {
+      "name": "C200充电宝",
+      "capacity": "20000mAh",
+      "output": "5V/3A",
+      "protocol": "QC3.0+PD3.0",
+      "weight": "350g",
+      "waterproof": "IPX4"
+    },
+    {
+      "name": "CS12充电柜",
+      "capacity": "12槽位",
+      "input": "AC 220V",
+      "output": "5V/2A per port",
+      "dimensions": "600x400x1800mm"
+    },
+    {
+      "name": "CS24充电柜",
+      "capacity": "24槽位",
+      "input": "AC 220V",
+      "output": "5V/2A per port",
+      "dimensions": "800x500x1800mm"
+    },
+    {
+      "name": "CS36充电柜",
+      "capacity": "36槽位",
+      "input": "AC 380V",
+      "output": "5V/2A per port",
+      "dimensions": "1000x600x1800mm"
+    }
+  ],
+  "milestones": [
+    {
+      "year": 2008,
+      "event": "倍斯特在深圳成立"
+    },
+    {
+      "year": 2015,
+      "event": "推出第一代共享充电宝产品"
+    },
+    {
+      "year": 2018,
+      "event": "年出货量突破100万台"
+    },
+    {
+      "year": 2020,
+      "event": "进入海外市场，覆盖欧美东南亚"
+    },
+    {
+      "year": 2022,
+      "event": "建立江苏工厂，年产能提升至500万台"
+    },
+    {
+      "year": 2024,
+      "event": "与ArkClaw达成战略合作，启动AI数字化升级"
+    },
+    {
+      "year": 2025,
+      "event": "建立广西工厂，拓展新能源电池领域"
+    }
+  ],
+  "culture": "创新、务实、客户至上",
+  "brand_guide": {
+    "primary_color": "#1A73E8",
+    "secondary_color": "#00C853",
+    "accent_color": "#FF6D00",
+    "font_title": "思源黑体 Bold",
+    "font_body": "思源黑体 Regular",
+    "font_en": "Inter",
+    "design_style": "简洁干净、圆角元素、图标化表达"
+  }
+}

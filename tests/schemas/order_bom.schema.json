@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderBomSchema",
+  "description": "倍用心-订单与BOM数据域Schema",
+  "type": "object",
+  "properties": {
+    "product_code": {"type": "string"},
+    "bom_version": {"type": "string"},
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["material_code", "material_name", "spec", "unit", "standard_qty"],
+        "properties": {
+          "material_code": {"type": "string"},
+          "material_name": {"type": "string"},
+          "spec": {"type": "string"},
+          "unit": {"type": "string"},
+          "standard_qty": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "optional_fields": {
+      "type": "object",
+      "properties": {
+        "material_types": {"type": "object"},
+        "bom_version": {"type": "string"},
+        "substitute_info": {"type": "array"}
+      }
+    },
+    "dependency": {"type": "string", "enum": ["strong", "partial"]}
+  },
+  "order_query": {
+    "type": "object",
+    "required": ["order_no", "customer_name", "product_model", "quantity", "delivery_date"],
+    "properties": {
+      "order_no": {"type": "string"},
+      "customer_name": {"type": "string"},
+      "product_model": {"type": "string"},
+      "quantity": {"type": "integer", "minimum": 1},
+      "unit_price": {"type": "number", "minimum": 0},
+      "delivery_date": {"type": "string"},
+      "order_date": {"type": "string"},
+      "optional_fields": {
+        "type": "object",
+        "properties": {
+          "order_status": {"type": "string"},
+          "work_order_no": {"type": "string"}
+        }
+      }
+    }
+  },
+  "delivery_data": {
+    "type": "object",
+    "required": ["order_no", "promised_delivery", "current_progress_pct", "milestones"],
+    "properties": {
+      "order_no": {"type": "string"},
+      "promised_delivery": {"type": "string"},
+      "current_progress_pct": {"type": "integer", "minimum": 0, "maximum": 100},
+      "milestones": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "node": {"type": "string"},
+            "planned": {"type": "string"},
+            "actual": {"type": ["string", "null"]}
+          }
+        }
+      }
+    }
+  }
+}

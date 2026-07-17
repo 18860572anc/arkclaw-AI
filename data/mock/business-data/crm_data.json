@@ -1,67 +1,104 @@
 {
-  "collaboration_tasks": [
-    {
-      "id": "TASK001",
-      "title": "客户A报价跟进",
-      "department": "销售部",
-      "collaborators": [
-        "商务部",
-        "研发部"
-      ],
-      "status": "in_progress",
-      "due_date": "2026-07-20",
-      "created_at": "2026-07-10"
-    },
-    {
-      "id": "TASK002",
-      "title": "新产品BOM审核",
-      "department": "研发部",
-      "collaborators": [
-        "采购部",
-        "制造中心"
-      ],
-      "status": "completed",
-      "due_date": "2026-07-15",
-      "created_at": "2026-07-05"
-    },
-    {
-      "id": "TASK003",
-      "title": "客诉处理-CP0001",
-      "department": "品质部",
-      "collaborators": [
-        "研发部",
-        "制造中心"
-      ],
-      "status": "in_progress",
-      "due_date": "2026-07-25",
-      "created_at": "2026-07-01"
-    }
-  ],
   "crm_dashboard": {
     "total_customers": 50,
-    "active_deals": 12,
-    "total_pipeline_value": 3500000,
-    "won_rate": 0.35,
-    "avg_deal_cycle_days": 45,
-    "recent_activities": [
-      {
-        "date": "2026-07-16",
-        "type": "客户拜访",
-        "customer": "客户E",
-        "summary": "初步沟通产品需求"
-      },
-      {
-        "date": "2026-07-15",
-        "type": "报价发送",
-        "customer": "客户F",
-        "summary": "发送CS12充电柜报价"
-      },
-      {
-        "date": "2026-07-14",
-        "type": "合同签约",
-        "customer": "客户G",
-        "summary": "签订200台充电柜合同"
-      }
-    ]
-  }
+    "active_customers": 35,
+    "dormant_customers": 15,
+    "new_inquiries_this_week": 8,
+    "collaboration_tasks_pending": 5
+  },
+  "collaboration_tasks": [
+    {
+      "id": "T001",
+      "title": "客户A报价跟进",
+      "department": "销售部",
+      "assignee": "张明",
+      "due_date": "2026-07-20",
+      "status": "in_progress"
+    },
+    {
+      "id": "T002",
+      "title": "客户B技术方案",
+      "department": "研发部",
+      "assignee": "陈工",
+      "due_date": "2026-07-18",
+      "status": "pending"
+    }
+  ],
+  "follow_up_records": [
+    {
+      "customer_code": "C1001",
+      "customer_name": "深圳市科技有限公司",
+      "sales_person": "张明",
+      "follow_up_date": "2026-07-15",
+      "method": "电话",
+      "content": "沟通新订单需求，预计8月下单",
+      "next_action": "准备报价单",
+      "next_date": "2026-07-18"
+    },
+    {
+      "customer_code": "C1001",
+      "customer_name": "深圳市科技有限公司",
+      "sales_person": "张明",
+      "follow_up_date": "2026-07-10",
+      "method": "拜访",
+      "content": "样品展示，客户对C200充电宝满意",
+      "next_action": "跟进合同签订",
+      "next_date": "2026-07-14"
+    },
+    {
+      "customer_code": "C1002",
+      "customer_name": "广州市贸易有限公司",
+      "sales_person": "李华",
+      "follow_up_date": "2026-07-12",
+      "method": "微信",
+      "content": "确认CS12充电柜技术参数",
+      "next_action": "发送正式报价",
+      "next_date": "2026-07-13"
+    },
+    {
+      "customer_code": "C1003",
+      "customer_name": "深圳市电子有限公司",
+      "sales_person": "王芳",
+      "follow_up_date": "2026-07-08",
+      "method": "邮件",
+      "content": "发送季度促销方案",
+      "next_action": "确认客户意向",
+      "next_date": "2026-07-20"
+    }
+  ],
+  "opportunities": [
+    {
+      "customer_code": "C1001",
+      "customer_name": "深圳市科技有限公司",
+      "opportunity_name": "C200充电宝批量采购",
+      "expected_amount": 450000.0,
+      "stage": "商务谈判",
+      "probability_pct": 70,
+      "expected_close": "2026-08",
+      "sales_person": "张明",
+      "created_date": "2026-06-20"
+    },
+    {
+      "customer_code": "C1002",
+      "customer_name": "广州市贸易有限公司",
+      "opportunity_name": "CS12充电柜代理",
+      "expected_amount": 640000.0,
+      "stage": "方案确认",
+      "probability_pct": 50,
+      "expected_close": "2026-09",
+      "sales_person": "李华",
+      "created_date": "2026-06-25"
+    },
+    {
+      "customer_code": "C1004",
+      "customer_name": "客户D",
+      "opportunity_name": "OEM充电宝定制",
+      "expected_amount": 280000.0,
+      "stage": "需求调研",
+      "probability_pct": 30,
+      "expected_close": "2026-10",
+      "sales_person": "赵强",
+      "created_date": "2026-07-01"
+    }
+  ]
 }

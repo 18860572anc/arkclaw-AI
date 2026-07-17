@@ -101,5 +101,82 @@
       "estimated_start": "2026-07-18",
       "estimated_complete": "2026-08-15"
     }
+  ],
+  "warehouse_in_records": [
+    {
+      "order_no": "ORD1001",
+      "product": "C200充电宝",
+      "factory": "江苏工厂",
+      "line": "充电宝产线A",
+      "planned_qty": 5000,
+      "produced_qty": 3200,
+      "warehoused_qty": 2800,
+      "defect_qty": 15,
+      "yield_rate": 0.973,
+      "warehouse_date": "2026-07-16"
+    },
+    {
+      "order_no": "ORD1002",
+      "product": "CS12充电柜",
+      "factory": "江苏工厂",
+      "line": "充电柜产线B",
+      "planned_qty": 200,
+      "produced_qty": 120,
+      "warehoused_qty": 100,
+      "defect_qty": 2,
+      "yield_rate": 0.983,
+      "warehouse_date": "2026-07-16"
+    }
+  ],
+  "production_progress": [
+    {
+      "order_no": "ORD1001",
+      "product": "C200充电宝",
+      "total_qty": 5000,
+      "completed_qty": 3200,
+      "completion_pct": 64.0,
+      "current_stage": "组装测试",
+      "planned_completion": "2026-08-10",
+      "risk": "low"
+    },
+    {
+      "order_no": "ORD1002",
+      "product": "CS12充电柜",
+      "total_qty": 200,
+      "completed_qty": 120,
+      "completion_pct": 60.0,
+      "current_stage": "组装调试",
+      "planned_completion": "2026-08-15",
+      "risk": "low"
+    }
+  ],
+  "capacity_data": [
+    {
+      "factory": "江苏工厂",
+      "line": "充电宝产线A",
+      "daily_capacity": 5000,
+      "current_load": 0.85,
+      "available_capacity": 750,
+      "status": "running",
+      "bottleneck": "SMT贴片工序"
+    },
+    {
+      "factory": "江苏工厂",
+      "line": "充电柜产线B",
+      "daily_capacity": 200,
+      "current_load": 0.78,
+      "available_capacity": 44,
+      "status": "running",
+      "bottleneck": "组装调试"
+    },
+    {
+      "factory": "广西工厂",
+      "line": "充电宝产线C",
+      "daily_capacity": 3000,
+      "current_load": 0.0,
+      "available_capacity": 3000,
+      "status": "commissioning",
+      "bottleneck": "设备调试中"
+    }
   ]
 }

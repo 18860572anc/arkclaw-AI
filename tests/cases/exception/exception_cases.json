@@ -56,7 +56,7 @@
       "scene": "客服",
       "name": "知识库无匹配",
       "input": {
-        "query": "一个非常特殊的问题",
+        "query": "一个非常特殊的问题没有任何匹配",
         "customer_type": "technical"
       },
       "mock_scenario": "no_match",
@@ -104,557 +104,115 @@
       "input": {
         "task": "merge_requirements",
         "orders": [
-          "ORD0001"
+          "ORD0001",
+          "ORD0002"
         ]
       },
-      "mock_scenario": "missing_inventory",
-      "expected": {
-        "error": false,
-        "warning": "部分库存数据缺失",
-        "fallback": "使用预估数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "PM-E001",
-      "scene": "项目管理",
-      "name": "并发更新冲突",
-      "input": {
-        "task": "update_progress",
-        "project_id": "P001",
-        "progress": 50
-      },
-      "mock_scenario": "concurrent_update",
+      "mock_scenario": "data_missing",
       "expected": {
         "error": true,
-        "code": "CONCURRENT_UPDATE",
-        "fallback": "刷新后重试"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OEM-E001",
-      "scene": "OEM快速设计",
-      "name": "设计模板生成失败",
-      "input": {
-        "task": "generate_oem_scheme",
-        "product_type": "充电宝",
-        "capacity": "10000mAh",
-        "color": "白色"
-      },
-      "mock_scenario": "design_service_down",
-      "expected": {
-        "error": true,
-        "code": "DESIGN_SERVICE_DOWN",
-        "fallback": "稍后重试"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OB-E001",
-      "scene": "海外B端售前助理",
-      "name": "汇率获取失败",
-      "input": {
-        "task": "generate_overseas_quote",
-        "customer_region": "北美",
-        "product": "CS12充电柜",
-        "qty": 500
-      },
-      "mock_scenario": "exchange_rate_failed",
-      "expected": {
-        "error": true,
-        "code": "EXCHANGE_RATE_FAILED",
-        "fallback": "使用最近汇率"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OD-E001",
-      "scene": "订单派发",
-      "name": "产线全部满负荷",
-      "input": {
-        "task": "dispatch_order",
-        "order_id": "ORD1001",
-        "factory": "江苏工厂"
-      },
-      "mock_scenario": "all_lines_full",
-      "expected": {
-        "error": true,
-        "code": "NO_AVAILABLE_LINE",
-        "fallback": "排入等待队列"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OP-E001",
-      "scene": "订单进度管理",
-      "name": "进度数据源异常",
-      "input": {
-        "task": "track_progress",
-        "order_id": "ORD1002"
-      },
-      "mock_scenario": "data_source_error",
-      "expected": {
-        "error": true,
-        "code": "DATA_SOURCE_ERROR",
-        "fallback": "显示缓存数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OR-E001",
-      "scene": "订单统筹及风险预警",
-      "name": "风险模型失效",
-      "input": {
-        "task": "scan_risks",
-        "time_range": "this_month"
-      },
-      "mock_scenario": "model_failure",
-      "expected": {
-        "error": true,
-        "code": "RISK_MODEL_FAILURE",
-        "fallback": "使用规则引擎兜底"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "IR-E001",
-      "scene": "智能回款",
-      "name": "CRM客户数据不一致",
-      "input": {
-        "task": "generate_collection_plan",
-        "customer_id": "C1001",
-        "overdue_days": 45
-      },
-      "mock_scenario": "crm_data_inconsistency",
-      "expected": {
-        "error": true,
-        "code": "DATA_INCONSISTENCY",
-        "fallback": "返回部分结果"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "BD-E001",
-      "scene": "部门助手(商务部)",
-      "name": "ERP数据同步延迟",
-      "input": {
-        "task": "monthly_report",
-        "department": "商务部",
-        "period": "2026-06"
-      },
-      "mock_scenario": "erp_sync_delay",
-      "expected": {
-        "error": false,
-        "warning": "数据可能非最新",
-        "fallback": "显示T-1数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "CC-E003",
-      "scene": "提成核算",
-      "name": "提成规则配置异常",
-      "input": {
-        "task": "calc_commission",
-        "sales_person": "张明",
-        "period": "2026-06"
-      },
-      "mock_scenario": "rule_config_error",
-      "expected": {
-        "error": true,
-        "code": "RULE_CONFIG_ERROR",
-        "fallback": "使用默认规则"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "IQ-E001",
-      "scene": "智能报价",
-      "name": "原材料价格波动过大",
-      "input": {
-        "task": "generate_quote",
-        "product_id": "C200",
-        "qty": 1000,
-        "customer_level": "A"
-      },
-      "mock_scenario": "price_volatility",
-      "expected": {
-        "error": false,
-        "warning": "价格波动超过5%",
-        "fallback": "添加价格浮动条款"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "IC-E001",
-      "scene": "内部协作与CRM监控",
-      "name": "飞书API限流",
-      "input": {
-        "task": "collaboration_dashboard",
-        "time_range": "this_week"
-      },
-      "mock_scenario": "api_rate_limit",
-      "expected": {
-        "error": true,
-        "code": "API_RATE_LIMITED",
+        "code": "DATA_MISSING",
         "fallback": "使用缓存数据"
       },
       "type": "exception"
     },
     {
-      "id": "PA-E001",
-      "scene": "人员分析与考核",
-      "name": "KPI数据部分缺失",
+      "id": "BX-E001",
+      "scene": "倍用心-订单查询",
+      "name": "倍用心系统不可用",
       "input": {
-        "task": "performance_analysis",
-        "department": "销售部",
-        "period": "2026-Q2"
+        "task": "byx_order_query",
+        "order_no": "ORD1001"
       },
-      "mock_scenario": "partial_kpi_data",
-      "expected": {
-        "error": false,
-        "warning": "部分KPI数据缺失",
-        "fallback": "使用已有数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "PG-E001",
-      "scene": "产品图库训练",
-      "name": "图片存储服务异常",
-      "input": {
-        "task": "search_gallery",
-        "keyword": "充电柜CS12",
-        "category": "产品图"
-      },
-      "mock_scenario": "storage_service_down",
+      "mock_scenario": "beiyongxin_down",
       "expected": {
         "error": true,
-        "code": "STORAGE_SERVICE_DOWN",
-        "fallback": "返回元数据"
+        "code": "DATA_SOURCE_UNAVAILABLE",
+        "fallback": "切换黑云系统查询"
       },
       "type": "exception"
     },
     {
-      "id": "PS-E001",
-      "scene": "生产排产",
-      "name": "MES系统离线",
+      "id": "BX-E002",
+      "scene": "倍用心-订单状态变更",
+      "name": "重复状态变更推送",
       "input": {
-        "task": "schedule_production",
-        "orders": [
-          "ORD1001",
-          "ORD1002"
-        ],
-        "factory": "江苏工厂"
+        "task": "byx_status_change",
+        "order_no": "ORD1001",
+        "old_status": "已入库",
+        "new_status": "已入库",
+        "change_time": "2026-07-16T10:00:00"
       },
-      "mock_scenario": "mes_offline",
       "expected": {
         "error": true,
-        "code": "MES_OFFLINE",
-        "fallback": "使用本地排产规则"
+        "code": "DUPLICATE_EVENT",
+        "fallback": "忽略重复事件"
       },
       "type": "exception"
     },
     {
-      "id": "QM-E001",
-      "scene": "品质管理总结",
-      "name": "品质数据异常",
+      "id": "BX-E003",
+      "scene": "倍用心-BOM清单",
+      "name": "BOM数据格式异常",
       "input": {
-        "task": "quality_monthly",
-        "period": "2026-06"
+        "task": "byx_bom_query",
+        "product_code": "C200"
       },
-      "mock_scenario": "quality_data_anomaly",
+      "mock_scenario": "data_format_error",
       "expected": {
         "error": true,
-        "code": "DATA_ANOMALY",
-        "fallback": "排除异常值后分析"
+        "code": "DATA_FORMAT_ERROR",
+        "fallback": "请检查数据源"
       },
       "type": "exception"
     },
     {
-      "id": "PI-E001",
-      "scene": "工艺改进分析",
-      "name": "历史数据不足",
+      "id": "BX-E004",
+      "scene": "倍用心-实时库存",
+      "name": "库存数据缺失",
       "input": {
-        "task": "process_analysis",
-        "product_line": "充电宝产线A",
-        "period": "2026-Q2"
+        "task": "byx_inventory",
+        "material_code": "MC001"
       },
-      "mock_scenario": "insufficient_history",
-      "expected": {
-        "error": false,
-        "warning": "数据不足以进行趋势分析",
-        "fallback": "使用行业基准数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "CR-E001",
-      "scene": "客诉根因分析",
-      "name": "根因分析数据库异常",
-      "input": {
-        "task": "root_cause_analysis",
-        "complaint_id": "CP0001"
-      },
-      "mock_scenario": "rca_db_error",
+      "mock_scenario": "data_missing",
       "expected": {
         "error": true,
-        "code": "RCA_DB_ERROR",
-        "fallback": "人工分析"
+        "code": "DATA_MISSING",
+        "fallback": "使用缓存数据"
       },
       "type": "exception"
     },
     {
-      "id": "AM-E001",
-      "scene": "阿米巴经营数据分析",
-      "name": "财务数据未结账",
+      "id": "BX-E005",
+      "scene": "倍用心-采购订单",
+      "name": "采购系统超时",
       "input": {
-        "task": "amoeba_accounting",
-        "unit": "销售部",
-        "period": "2026-06"
+        "task": "byx_purchase_orders"
       },
-      "mock_scenario": "finance_not_closed",
+      "mock_scenario": "api_timeout",
       "expected": {
         "error": true,
-        "code": "FINANCE_NOT_CLOSED",
-        "fallback": "使用预估数据"
+        "code": "SERVICE_TIMEOUT",
+        "fallback": "请稍后重试"
       },
       "type": "exception"
     },
     {
-      "id": "MF-E002",
-      "scene": "部门助手(制造中心)",
-      "name": "设备数据采集异常",
+      "id": "BX-E006",
+      "scene": "倍用心-收款记录",
+      "name": "财务系统数据异常",
       "input": {
-        "task": "daily_report",
-        "department": "制造中心",
-        "date": "2026-07-16"
+        "task": "byx_payment_records"
       },
-      "mock_scenario": "iot_data_error",
+      "mock_scenario": "data_inconsistency",
       "expected": {
         "error": true,
-        "code": "IOT_DATA_ERROR",
-        "fallback": "使用手动录入数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "EC-E001",
-      "scene": "企业文化总结",
-      "name": "员工反馈数据异常",
-      "input": {
-        "task": "culture_summary",
-        "period": "2026-Q2"
-      },
-      "mock_scenario": "survey_data_error",
-      "expected": {
-        "error": true,
-        "code": "SURVEY_DATA_ERROR",
-        "fallback": "使用历史数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "IP-E001",
-      "scene": "内部政策校验分析",
-      "name": "政策文档版本冲突",
-      "input": {
-        "task": "policy_check",
-        "document": "报销单",
-        "policy_id": "POL-002"
-      },
-      "mock_scenario": "version_conflict",
-      "expected": {
-        "error": true,
-        "code": "VERSION_CONFLICT",
-        "fallback": "使用最新版本"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "GP-E001",
-      "scene": "政府政策匹配",
-      "name": "政策数据库更新延迟",
-      "input": {
-        "task": "match_policy",
-        "company_industry": "新能源",
-        "company_region": "深圳",
-        "revenue": "50000000"
-      },
-      "mock_scenario": "policy_db_stale",
-      "expected": {
-        "error": false,
-        "warning": "政策数据可能非最新",
-        "fallback": "显示最近缓存"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "CQ-E001",
-      "scene": "公司资质规划",
-      "name": "资质要求数据更新延迟",
-      "input": {
-        "task": "qualification_plan",
-        "company_stage": "扩张期",
-        "target_markets": [
-          "欧美"
-        ]
-      },
-      "mock_scenario": "requirement_stale",
-      "expected": {
-        "error": false,
-        "warning": "部分要求可能已更新",
-        "fallback": "显示最近缓存"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "TA-E001",
-      "scene": "人才分析",
-      "name": "HR系统数据同步异常",
-      "input": {
-        "task": "talent_review",
-        "department": "研发部"
-      },
-      "mock_scenario": "hr_sync_error",
-      "expected": {
-        "error": true,
-        "code": "HR_SYNC_ERROR",
-        "fallback": "使用快照数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "AM-E002",
-      "scene": "阿米巴经营分析(管理中心)",
-      "name": "费用分摊规则异常",
-      "input": {
-        "task": "amoeba_management",
-        "unit": "管理中心",
-        "period": "2026-06"
-      },
-      "mock_scenario": "allocation_rule_error",
-      "expected": {
-        "error": true,
-        "code": "ALLOCATION_RULE_ERROR",
-        "fallback": "使用平均分摊"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "AC-E001",
-      "scene": "会计分目(做账)",
-      "name": "科目余额不平",
-      "input": {
-        "task": "generate_voucher",
-        "transaction_type": "销售",
-        "amount": 50000,
-        "customer": "客户A"
-      },
-      "mock_scenario": "imbalanced_entries",
-      "expected": {
-        "error": true,
-        "code": "IMBALANCED_ENTRY",
-        "fallback": "检查借贷方金额"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "TX-E001",
-      "scene": "智能报税",
-      "name": "税务局系统维护",
-      "input": {
-        "task": "tax_filing",
-        "tax_type": "VAT",
-        "period": "2026-06"
-      },
-      "mock_scenario": "tax_system_maintenance",
-      "expected": {
-        "error": true,
-        "code": "TAX_SYSTEM_MAINTENANCE",
-        "fallback": "暂存待提交"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "MF-E003",
-      "scene": "市场行情预测",
-      "name": "历史数据不足",
-      "input": {
-        "task": "forecast",
-        "material": "锂电池(18650)",
-        "horizon_months": 3
-      },
-      "mock_scenario": "insufficient_history",
-      "expected": {
-        "error": false,
-        "warning": "历史数据不足以预测",
-        "fallback": "使用行业趋势"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "SP-E001",
-      "scene": "供应商比价",
-      "name": "部分供应商数据缺失",
-      "input": {
-        "task": "compare_prices",
-        "material": "锂电池组",
-        "suppliers": [
-          "供应商A",
-          "供应商B"
-        ],
-        "qty": 1000
-      },
-      "mock_scenario": "partial_data",
-      "expected": {
-        "error": false,
-        "warning": "部分供应商数据缺失",
-        "fallback": "显示已有数据"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "SE-E002",
-      "scene": "供应商评价",
-      "name": "评分维度权重配置异常",
-      "input": {
-        "task": "evaluate_supplier",
-        "supplier_id": "SUP001",
-        "dimensions": [
-          "质量",
-          "交期"
-        ]
-      },
-      "mock_scenario": "weight_config_error",
-      "expected": {
-        "error": true,
-        "code": "WEIGHT_CONFIG_ERROR",
-        "fallback": "使用等权重"
-      },
-      "type": "exception"
-    },
-    {
-      "id": "OL-E001",
-      "scene": "海外物流报价",
-      "name": "物流商报价接口异常",
-      "input": {
-        "task": "logistics_quote",
-        "origin": "深圳",
-        "destination": "洛杉矶",
-        "weight_kg": 500,
-        "volume_cbm": 2.5
-      },
-      "mock_scenario": "carrier_api_down",
-      "expected": {
-        "error": true,
-        "code": "CARRIER_API_DOWN",
-        "fallback": "使用上次报价"
+        "code": "DATA_INCONSISTENCY",
+        "fallback": "通知财务人工核对"
       },
       "type": "exception"
     }
   ],
-  "total": 38,
+  "total": 13,
   "type": "exception"
 }

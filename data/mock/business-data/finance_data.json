@@ -136,5 +136,145 @@
       "filing_frequency": "monthly",
       "deadline": "当月最后一日"
     }
-  }
+  },
+  "outbound_details": [
+    {
+      "outbound_no": "OB20260701001",
+      "order_no": "ORD1001",
+      "customer": "客户A",
+      "product": "C200充电宝",
+      "qty": 1000,
+      "unit_price": 45.0,
+      "total_amount": 45000.0,
+      "outbound_date": "2026-07-10",
+      "warehouse": "成品仓"
+    },
+    {
+      "outbound_no": "OB20260715001",
+      "order_no": "ORD1001",
+      "customer": "客户A",
+      "product": "C200充电宝",
+      "qty": 1800,
+      "unit_price": 45.0,
+      "total_amount": 81000.0,
+      "outbound_date": "2026-07-15",
+      "warehouse": "成品仓"
+    },
+    {
+      "outbound_no": "OB20260715002",
+      "order_no": "ORD1002",
+      "customer": "客户B",
+      "product": "CS12充电柜",
+      "qty": 50,
+      "unit_price": 3200.0,
+      "total_amount": 160000.0,
+      "outbound_date": "2026-07-15",
+      "warehouse": "成品仓"
+    }
+  ],
+  "payment_records": [
+    {
+      "payment_no": "PAY20260701001",
+      "customer": "客户A",
+      "amount": 45000.0,
+      "payment_date": "2026-07-01",
+      "payment_method": "银行转账",
+      "related_invoice": "INV20260701001",
+      "status": "confirmed"
+    },
+    {
+      "payment_no": "PAY20260710001",
+      "customer": "客户B",
+      "amount": 128000.0,
+      "payment_date": "2026-07-10",
+      "payment_method": "承兑汇票",
+      "related_invoice": "INV20260710001",
+      "status": "confirmed"
+    },
+    {
+      "payment_no": "PAY20260715001",
+      "customer": "客户A",
+      "amount": 81000.0,
+      "payment_date": "2026-07-15",
+      "payment_method": "银行转账",
+      "related_invoice": "INV20260715001",
+      "status": "pending"
+    }
+  ],
+  "expenses": [
+    {
+      "expense_no": "EXP20260701001",
+      "department": "制造中心",
+      "category": "原材料采购",
+      "amount": 250000.0,
+      "expense_date": "2026-07-01",
+      "status": "approved",
+      "remark": "7月第一批物料采购"
+    },
+    {
+      "expense_no": "EXP20260705001",
+      "department": "研发部",
+      "category": "设备采购",
+      "amount": 85000.0,
+      "expense_date": "2026-07-05",
+      "status": "approved",
+      "remark": "新测试设备采购"
+    },
+    {
+      "expense_no": "EXP20260710001",
+      "department": "销售部",
+      "category": "差旅费",
+      "amount": 12000.0,
+      "expense_date": "2026-07-10",
+      "status": "pending",
+      "remark": "客户拜访差旅"
+    },
+    {
+      "expense_no": "EXP20260712001",
+      "department": "管理中心",
+      "category": "办公费用",
+      "amount": 8000.0,
+      "expense_date": "2026-07-12",
+      "status": "approved",
+      "remark": "办公用品采购"
+    }
+  ],
+  "labor_hours": [
+    {
+      "department": "制造中心",
+      "period": "2026-07",
+      "total_hours": 8560,
+      "regular_hours": 8000,
+      "overtime_hours": 560,
+      "headcount": 50,
+      "avg_hours_per_person": 171.2
+    },
+    {
+      "department": "研发部",
+      "period": "2026-07",
+      "total_hours": 3400,
+      "regular_hours": 3200,
+      "overtime_hours": 200,
+      "headcount": 20,
+      "avg_hours_per_person": 170.0
+    },
+    {
+      "department": "销售部",
+      "period": "2026-07",
+      "total_hours": 1680,
+      "regular_hours": 1600,
+      "overtime_hours": 80,
+      "headcount": 10,
+      "avg_hours_per_person": 168.0
+    },
+    {
+      "department": "管理中心",
+      "period": "2026-07",
+      "total_hours": 1260,
+      "regular_hours": 1200,
+      "overtime_hours": 60,
+      "headcount": 8,
+      "avg_hours_per_person": 157.5
+    }
+  ]
 }

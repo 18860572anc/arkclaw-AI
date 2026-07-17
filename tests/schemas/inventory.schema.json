@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InventorySchema",
+  "description": "倍用心-库存与物料数据域Schema",
+  "type": "object",
+  "properties": {
+    "material_code": {"type": "string"},
+    "available_qty": {"type": "integer", "minimum": 0},
+    "in_transit_qty": {"type": "integer", "minimum": 0},
+    "optional_fields": {
+      "type": "object",
+      "properties": {
+        "warehouse_name": {"type": "string"},
+        "safety_stock": {"type": "integer"},
+        "batch_date": {"type": "string"}
+      }
+    },
+    "dependency": {"type": "string", "enum": ["strong", "partial"]}
+  },
+  "shortage_item": {
+    "type": "object",
+    "required": ["material_code", "material_name", "required_qty", "received_qty", "shortage_qty", "expected_arrival"],
+    "properties": {
+      "material_code": {"type": "string"},
+      "material_name": {"type": "string"},
+      "required_qty": {"type": "integer"},
+      "received_qty": {"type": "integer"},
+      "shortage_qty": {"type": "integer"},
+      "expected_arrival": {"type": "string"},
+      "optional_fields": {
+        "type": "object",
+        "properties": {
+          "current_status": {"type": "string"},
+          "supplier_name": {"type": "string"}
+        }
+      }
+    }
+  },
+  "slow_moving_item": {
+    "type": "object",
+    "required": ["material_code", "material_name", "stock_qty", "inbound_date", "last_used_date"],
+    "properties": {
+      "material_code": {"type": "string"},
+      "material_name": {"type": "string"},
+      "stock_qty": {"type": "integer"},
+      "inbound_date": {"type": "string"},
+      "last_used_date": {"type": "string"},
+      "purchase_order_no": {"type": "string"},
+      "batch_no": {"type": "string"}
+    }
+  }
+}

@@ -842,8 +842,389 @@
         ]
       },
       "type": "normal"
+    },
+    {
+      "id": "BX-N001",
+      "scene": "倍用心-BOM清单",
+      "name": "BOM清单查询-正常",
+      "input": {
+        "task": "byx_bom_query",
+        "product_code": "C200",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_bom": true,
+        "fields": [
+          "物料编码",
+          "物料名称",
+          "标准用量"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N002",
+      "scene": "倍用心-订单查询",
+      "name": "订单信息查询-正常",
+      "input": {
+        "task": "byx_order_query",
+        "order_no": "ORD1001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_orders": true,
+        "fields": [
+          "订单编号",
+          "产品型号",
+          "数量",
+          "交期"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N003",
+      "scene": "倍用心-订单状态变更",
+      "name": "订单状态变更推送-正常",
+      "input": {
+        "task": "byx_status_change",
+        "order_no": "ORD1001",
+        "old_status": "生产中",
+        "new_status": "已入库",
+        "change_time": "2026-07-16T10:00:00",
+        "dependency": "strong"
+      },
+      "expected": {
+        "acknowledged": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N004",
+      "scene": "倍用心-订单交期",
+      "name": "订单交期数据查询-正常",
+      "input": {
+        "task": "byx_delivery_data",
+        "order_no": "ORD1001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_milestones": true,
+        "fields": [
+          "承诺交期",
+          "进度百分比",
+          "里程碑"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N005",
+      "scene": "倍用心-实时库存",
+      "name": "实时库存查询-正常",
+      "input": {
+        "task": "byx_inventory",
+        "material_code": "MC001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_inventory": true,
+        "fields": [
+          "可用库存量",
+          "在途库存量"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N006",
+      "scene": "倍用心-欠料明细",
+      "name": "欠料明细查询-正常",
+      "input": {
+        "task": "byx_shortage",
+        "order_no": "ORD1001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_shortage": true,
+        "fields": [
+          "欠料数量",
+          "预计到货日期"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N007",
+      "scene": "倍用心-呆滞物料",
+      "name": "呆滞物料清单-正常",
+      "input": {
+        "task": "byx_slow_moving",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_items": true,
+        "fields": [
+          "物料编码",
+          "库存数量",
+          "最后使用日期"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N008",
+      "scene": "倍用心-采购订单",
+      "name": "采购订单查询-正常",
+      "input": {
+        "task": "byx_purchase_orders",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_orders": true,
+        "fields": [
+          "采购订单编号",
+          "采购数量",
+          "未交货数量"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N009",
+      "scene": "倍用心-供应商主数据",
+      "name": "供应商主数据查询-正常",
+      "input": {
+        "task": "byx_supplier_master",
+        "supplier_code": "SUP001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_suppliers": true,
+        "fields": [
+          "供应商名称",
+          "物料类型",
+          "评分"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N010",
+      "scene": "倍用心-采购交期状态",
+      "name": "采购订单交期状态-正常",
+      "input": {
+        "task": "byx_delivery_status",
+        "po_no": "PO20260701001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_statuses": true,
+        "fields": [
+          "剩余数量",
+          "风险等级"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N011",
+      "scene": "倍用心-历史交易",
+      "name": "供应商历史交易-正常",
+      "input": {
+        "task": "byx_purchase_history",
+        "supplier_code": "SUP001",
+        "months": 12,
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_records": true,
+        "total_amount": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N012",
+      "scene": "倍用心-产线入库",
+      "name": "产线入库状态-正常",
+      "input": {
+        "task": "byx_warehouse_in",
+        "factory_code": "JS001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_records": true,
+        "fields": [
+          "计划数量",
+          "入库数量",
+          "良率"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N013",
+      "scene": "倍用心-生产进度",
+      "name": "生产进度查询-正常",
+      "input": {
+        "task": "byx_prod_progress",
+        "order_no": "ORD1001",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_progress": true,
+        "fields": [
+          "完成数量",
+          "完成百分比",
+          "当前阶段"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N014",
+      "scene": "倍用心-产能数据",
+      "name": "产能数据查询-正常",
+      "input": {
+        "task": "byx_capacity",
+        "factory_code": "JS001",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_capacity": true,
+        "fields": [
+          "日产能",
+          "当前负荷",
+          "瓶颈"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N015",
+      "scene": "倍用心-出库明细",
+      "name": "出库明细查询-正常",
+      "input": {
+        "task": "byx_outbound",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_details": true,
+        "fields": [
+          "出库单号",
+          "出库数量",
+          "金额"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N016",
+      "scene": "倍用心-收款记录",
+      "name": "收款记录查询-正常",
+      "input": {
+        "task": "byx_payment_records",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_records": true,
+        "fields": [
+          "收款金额",
+          "收款方式",
+          "状态"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N017",
+      "scene": "倍用心-费用支出",
+      "name": "费用支出查询-正常",
+      "input": {
+        "task": "byx_expenses",
+        "dept_code": "制造中心",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_expenses": true,
+        "total_amount": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N018",
+      "scene": "倍用心-工时数据",
+      "name": "工时数据查询-正常",
+      "input": {
+        "task": "byx_labor_hours",
+        "dept_code": "制造中心",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_hours": true,
+        "avg_hours_per_person": true
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N019",
+      "scene": "倍用心-客户信息",
+      "name": "客户信息查询-正常",
+      "input": {
+        "task": "byx_customer_info",
+        "customer_code": "C1001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_customers": true,
+        "fields": [
+          "客户名称",
+          "行业",
+          "客户等级"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N020",
+      "scene": "倍用心-跟进记录",
+      "name": "客户跟进记录-正常",
+      "input": {
+        "task": "byx_follow_up",
+        "customer_code": "C1001",
+        "dependency": "partial"
+      },
+      "expected": {
+        "has_records": true,
+        "fields": [
+          "跟进日期",
+          "跟进内容",
+          "下一步行动"
+        ]
+      },
+      "type": "normal"
+    },
+    {
+      "id": "BX-N021",
+      "scene": "倍用心-商机状态",
+      "name": "商机状态查询-正常",
+      "input": {
+        "task": "byx_opportunity",
+        "customer_code": "C1001",
+        "dependency": "strong"
+      },
+      "expected": {
+        "has_opportunities": true,
+        "fields": [
+          "商机名称",
+          "预计金额",
+          "阶段",
+          "赢率"
+        ]
+      },
+      "type": "normal"
     }
   ],
-  "total": 47,
+  "total": 68,
   "type": "normal"
 }

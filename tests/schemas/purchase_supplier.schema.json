@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PurchaseSupplierSchema",
+  "description": "倍用心-采购与供应商数据域Schema",
+  "type": "object",
+  "properties": {
+    "purchase_order": {
+      "type": "object",
+      "required": ["po_no", "supplier_name", "material_code", "material_name", "purchase_qty", "delivered_qty", "undelivered_qty", "promised_delivery"],
+      "properties": {
+        "po_no": {"type": "string"},
+        "supplier_name": {"type": "string"},
+        "material_code": {"type": "string"},
+        "material_name": {"type": "string"},
+        "purchase_qty": {"type": "integer", "minimum": 1},
+        "delivered_qty": {"type": "integer", "minimum": 0},
+        "undelivered_qty": {"type": "integer", "minimum": 0},
+        "promised_delivery": {"type": "string"},
+        "optional_fields": {
+          "type": "object",
+          "properties": {
+            "order_status": {"type": "string"}
+          }
+        }
+      }
+    },
+    "supplier_master": {
+      "type": "object",
+      "required": ["supplier_code", "supplier_name", "material_type", "rating", "delivery_punctuality_rate"],
+      "properties": {
+        "supplier_code": {"type": "string"},
+        "supplier_name": {"type": "string"},
+        "material_type": {"type": "string"},
+        "rating": {"type": "number", "minimum": 0, "maximum": 5},
+        "delivery_punctuality_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "price_level": {"type": "string"},
+        "cooperation_years": {"type": "integer"},
+        "certifications": {"type": "array", "items": {"type": "string"}},
+        "contact_person": {"type": "string"},
+        "contact_phone": {"type": "string"},
+        "bank_info": {
+          "type": "object",
+          "properties": {
+            "bank": {"type": "string"},
+            "account": {"type": "string"}
+          }
+        },
+        "payment_terms": {"type": "string"}
+      }
+    },
+    "delivery_status": {
+      "type": "object",
+      "required": ["po_no", "supplier", "material", "qty", "remaining_qty", "status"],
+      "properties": {
+        "po_no": {"type": "string"},
+        "supplier": {"type": "string"},
+        "material": {"type": "string"},
+        "qty": {"type": "integer"},
+        "remaining_qty": {"type": "integer"},
+        "status": {"type": "string", "enum": ["partial", "pending", "completed"]},
+        "next_delivery": {"type": "string"},
+        "risk_level": {"type": "string", "enum": ["高", "中", "低"]},
+        "tracking_no": {"type": "string"}
+      }
+    }
+  }
+}

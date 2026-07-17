@@ -132,4 +132,98 @@ def generate_exception_cases():
         {"id": "CS-E001", "scene": "客服", "name": "知识库无匹配", "input": {"query": "一个非常特殊的问题没有任何匹配", "customer_type": "technical"}, "mock_scenario": "no_match", "expected": {"error": False, "fallback": "转人工"}, "type": "exception"},
         {"id": "DA-E001", "scene": "沉睡客户激活", "name": "黑云系统不可用", "input": {"task": "identify_dormant", "threshold_days": 365}, "mock_scenario": "heiyun_down", "expected": {"error": True, "code": "DATA_SOURCE_UNAVAILABLE", "fallback": "使用缓存数据"}, "type": "exception"},
         {"id": "MK-E001", "scene": "物料齐套", "name": "BOM数据格式异常", "input": {"project_id": "P001"}, "mock_scenario": "data_format_error", "expected": {"error": True, "code": "DATA_FORMAT_ERROR", "fallback": "请检查数据源"}, "type": "exception"},
-        {"id": "PR-E001", "scene": "采购分析", "name": "库存数据缺失", "input":
+        {"id": "PR-E001", "scene": "采购分析", "name": "库存数据缺失", "input": {"task": "merge_requirements", "orders": ["ORD0001", "ORD0002"]}, "mock_scenario": "data_missing", "expected": {"error": True, "code": "DATA_MISSING", "fallback": "使用缓存数据"}, "type": "exception"},
+    ]
+    path = os.path.join(CASES_DIR, "exception", "exception_cases.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"cases": cases, "total": len(cases), "type": "exception"}, f, ensure_ascii=False, indent=2)
+    print(f"Exception cases: {len(cases)}")
+    return cases
+
+
+def generate_byx_normal_cases():
+    """倍用心系统接口对接场景 - 正常测试用例"""
+    cases = [
+        # === 订单与BOM数据域 ===
+        {"id": "BX-N001", "scene": "倍用心-BOM清单", "name": "BOM清单查询-正常", "input": {"task": "byx_bom_query", "product_code": "C200", "dependency": "partial"}, "expected": {"has_bom": True, "fields": ["物料编码", "物料名称", "标准用量"]}, "type": "normal"},
+        {"id": "BX-N002", "scene": "倍用心-订单查询", "name": "订单信息查询-正常", "input": {"task": "byx_order_query", "order_no": "ORD1001", "dependency": "strong"}, "expected": {"has_orders": True, "fields": ["订单编号", "产品型号", "数量", "交期"]}, "type": "normal"},
+        {"id": "BX-N003", "scene": "倍用心-订单状态变更", "name": "订单状态变更推送-正常", "input": {"task": "byx_status_change", "order_no": "ORD1001", "old_status": "生产中", "new_status": "已入库", "change_time": "2026-07-16T10:00:00", "dependency": "strong"}, "expected": {"acknowledged": True}, "type": "normal"},
+        {"id": "BX-N004", "scene": "倍用心-订单交期", "name": "订单交期数据查询-正常", "input": {"task": "byx_delivery_data", "order_no": "ORD1001", "dependency": "strong"}, "expected": {"has_milestones": True, "fields": ["承诺交期", "进度百分比", "里程碑"]}, "type": "normal"},
+        # === 库存与物料数据域 ===
+        {"id": "BX-N005", "scene": "倍用心-实时库存", "name": "实时库存查询-正常", "input": {"task": "byx_inventory", "material_code": "MC001", "dependency": "strong"}, "expected": {"has_inventory": True, "fields": ["可用库存量", "在途库存量"]}, "type": "normal"},
+        {"id": "BX-N006", "scene": "倍用心-欠料明细", "name": "欠料明细查询-正常", "input": {"task": "byx_shortage", "order_no": "ORD1001", "dependency": "strong"}, "expected": {"has_shortage": True, "fields": ["欠料数量", "预计到货日期"]}, "type": "normal"},
+        {"id": "BX-N007", "scene": "倍用心-呆滞物料", "name": "呆滞物料清单-正常", "input": {"task": "byx_slow_moving", "dependency": "strong"}, "expected": {"has_items": True, "fields": ["物料编码", "库存数量", "最后使用日期"]}, "type": "normal"},
+        # === 采购与供应商数据域 ===
+        {"id": "BX-N008", "scene": "倍用心-采购订单", "name": "采购订单查询-正常", "input": {"task": "byx_purchase_orders", "dependency": "strong"}, "expected": {"has_orders": True, "fields": ["采购订单编号", "采购数量", "未交货数量"]}, "type": "normal"},
+        {"id": "BX-N009", "scene": "倍用心-供应商主数据", "name": "供应商主数据查询-正常", "input": {"task": "byx_supplier_master", "supplier_code": "SUP001", "dependency": "strong"}, "expected": {"has_suppliers": True, "fields": ["供应商名称", "物料类型", "评分"]}, "type": "normal"},
+        {"id": "BX-N010", "scene": "倍用心-采购交期状态", "name": "采购订单交期状态-正常", "input": {"task": "byx_delivery_status", "po_no": "PO20260701001", "dependency": "strong"}, "expected": {"has_statuses": True, "fields": ["剩余数量", "风险等级"]}, "type": "normal"},
+        {"id": "BX-N011", "scene": "倍用心-历史交易", "name": "供应商历史交易-正常", "input": {"task": "byx_purchase_history", "supplier_code": "SUP001", "months": 12, "dependency": "partial"}, "expected": {"has_records": True, "total_amount": True}, "type": "normal"},
+        # === 生产与进度数据域 ===
+        {"id": "BX-N012", "scene": "倍用心-产线入库", "name": "产线入库状态-正常", "input": {"task": "byx_warehouse_in", "factory_code": "JS001", "dependency": "strong"}, "expected": {"has_records": True, "fields": ["计划数量", "入库数量", "良率"]}, "type": "normal"},
+        {"id": "BX-N013", "scene": "倍用心-生产进度", "name": "生产进度查询-正常", "input": {"task": "byx_prod_progress", "order_no": "ORD1001", "dependency": "partial"}, "expected": {"has_progress": True, "fields": ["完成数量", "完成百分比", "当前阶段"]}, "type": "normal"},
+        {"id": "BX-N014", "scene": "倍用心-产能数据", "name": "产能数据查询-正常", "input": {"task": "byx_capacity", "factory_code": "JS001", "dependency": "partial"}, "expected": {"has_capacity": True, "fields": ["日产能", "当前负荷", "瓶颈"]}, "type": "normal"},
+        # === 财务与收款数据域 ===
+        {"id": "BX-N015", "scene": "倍用心-出库明细", "name": "出库明细查询-正常", "input": {"task": "byx_outbound", "dependency": "strong"}, "expected": {"has_details": True, "fields": ["出库单号", "出库数量", "金额"]}, "type": "normal"},
+        {"id": "BX-N016", "scene": "倍用心-收款记录", "name": "收款记录查询-正常", "input": {"task": "byx_payment_records", "dependency": "strong"}, "expected": {"has_records": True, "fields": ["收款金额", "收款方式", "状态"]}, "type": "normal"},
+        {"id": "BX-N017", "scene": "倍用心-费用支出", "name": "费用支出查询-正常", "input": {"task": "byx_expenses", "dept_code": "制造中心", "dependency": "partial"}, "expected": {"has_expenses": True, "total_amount": True}, "type": "normal"},
+        {"id": "BX-N018", "scene": "倍用心-工时数据", "name": "工时数据查询-正常", "input": {"task": "byx_labor_hours", "dept_code": "制造中心", "dependency": "partial"}, "expected": {"has_hours": True, "avg_hours_per_person": True}, "type": "normal"},
+        # === CRM与客户数据域 ===
+        {"id": "BX-N019", "scene": "倍用心-客户信息", "name": "客户信息查询-正常", "input": {"task": "byx_customer_info", "customer_code": "C1001", "dependency": "strong"}, "expected": {"has_customers": True, "fields": ["客户名称", "行业", "客户等级"]}, "type": "normal"},
+        {"id": "BX-N020", "scene": "倍用心-跟进记录", "name": "客户跟进记录-正常", "input": {"task": "byx_follow_up", "customer_code": "C1001", "dependency": "partial"}, "expected": {"has_records": True, "fields": ["跟进日期", "跟进内容", "下一步行动"]}, "type": "normal"},
+        {"id": "BX-N021", "scene": "倍用心-商机状态", "name": "商机状态查询-正常", "input": {"task": "byx_opportunity", "customer_code": "C1001", "dependency": "strong"}, "expected": {"has_opportunities": True, "fields": ["商机名称", "预计金额", "阶段", "赢率"]}, "type": "normal"},
+    ]
+    return cases
+
+
+def generate_byx_boundary_cases():
+    """倍用心系统接口对接场景 - 边界测试用例"""
+    cases = [
+        {"id": "BX-B001", "scene": "倍用心-BOM清单", "name": "空产品编码", "input": {"task": "byx_bom_query", "product_code": ""}, "expected": {"error": True, "message_contains": ["产品型号"]}, "type": "boundary"},
+        {"id": "BX-B002", "scene": "倍用心-订单状态变更", "name": "空订单号推送", "input": {"task": "byx_status_change", "order_no": "", "old_status": "生产中", "new_status": "已入库"}, "expected": {"error": True, "code": "INVALID_ORDER"}, "type": "boundary"},
+        {"id": "BX-B003", "scene": "倍用心-订单交期", "name": "空订单号查询", "input": {"task": "byx_delivery_data", "order_no": ""}, "expected": {"error": True, "code": "INVALID_ORDER"}, "type": "boundary"},
+        {"id": "BX-B004", "scene": "倍用心-实时库存", "name": "空物料编码", "input": {"task": "byx_inventory", "material_code": ""}, "expected": {"error": True, "code": "INVALID_MATERIAL"}, "type": "boundary"},
+        {"id": "BX-B005", "scene": "倍用心-欠料明细", "name": "空订单编号", "input": {"task": "byx_shortage", "order_no": ""}, "expected": {"error": True, "code": "INVALID_ORDER"}, "type": "boundary"},
+        {"id": "BX-B006", "scene": "倍用心-历史交易", "name": "空供应商编码", "input": {"task": "byx_purchase_history", "supplier_code": "", "months": 12}, "expected": {"error": True, "code": "INVALID_SUPPLIER"}, "type": "boundary"},
+        {"id": "BX-B007", "scene": "倍用心-历史交易", "name": "负值回溯月数", "input": {"task": "byx_purchase_history", "supplier_code": "SUP001", "months": -1}, "expected": {"error": True, "message_contains": ["期限"]}, "type": "boundary"},
+        {"id": "BX-B008", "scene": "倍用心-客户信息", "name": "不存在的客户编码", "input": {"task": "byx_customer_info", "customer_code": "NONEXIST"}, "expected": {"has_customers": False, "total": 0}, "type": "boundary"},
+    ]
+    return cases
+
+
+def generate_byx_exception_cases():
+    """倍用心系统接口对接场景 - 异常测试用例"""
+    cases = [
+        {"id": "BX-E001", "scene": "倍用心-订单查询", "name": "倍用心系统不可用", "input": {"task": "byx_order_query", "order_no": "ORD1001"}, "mock_scenario": "beiyongxin_down", "expected": {"error": True, "code": "DATA_SOURCE_UNAVAILABLE", "fallback": "切换黑云系统查询"}, "type": "exception"},
+        {"id": "BX-E002", "scene": "倍用心-订单状态变更", "name": "重复状态变更推送", "input": {"task": "byx_status_change", "order_no": "ORD1001", "old_status": "已入库", "new_status": "已入库", "change_time": "2026-07-16T10:00:00"}, "expected": {"error": True, "code": "DUPLICATE_EVENT", "fallback": "忽略重复事件"}, "type": "exception"},
+        {"id": "BX-E003", "scene": "倍用心-BOM清单", "name": "BOM数据格式异常", "input": {"task": "byx_bom_query", "product_code": "C200"}, "mock_scenario": "data_format_error", "expected": {"error": True, "code": "DATA_FORMAT_ERROR", "fallback": "请检查数据源"}, "type": "exception"},
+        {"id": "BX-E004", "scene": "倍用心-实时库存", "name": "库存数据缺失", "input": {"task": "byx_inventory", "material_code": "MC001"}, "mock_scenario": "data_missing", "expected": {"error": True, "code": "DATA_MISSING", "fallback": "使用缓存数据"}, "type": "exception"},
+        {"id": "BX-E005", "scene": "倍用心-采购订单", "name": "采购系统超时", "input": {"task": "byx_purchase_orders"}, "mock_scenario": "api_timeout", "expected": {"error": True, "code": "SERVICE_TIMEOUT", "fallback": "请稍后重试"}, "type": "exception"},
+        {"id": "BX-E006", "scene": "倍用心-收款记录", "name": "财务系统数据异常", "input": {"task": "byx_payment_records"}, "mock_scenario": "data_inconsistency", "expected": {"error": True, "code": "DATA_INCONSISTENCY", "fallback": "通知财务人工核对"}, "type": "exception"},
+    ]
+    return cases
+
+
+if __name__ == "__main__":
+    ensure_dirs()
+    normal_cases = generate_normal_cases() + generate_byx_normal_cases()
+    boundary_cases = generate_boundary_cases() + generate_byx_boundary_cases()
+    exception_cases = generate_exception_cases() + generate_byx_exception_cases()
+
+    # Write normal cases
+    path = os.path.join(CASES_DIR, "normal", "normal_cases.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"cases": normal_cases, "total": len(normal_cases), "type": "normal"}, f, ensure_ascii=False, indent=2)
+    print(f"Normal cases: {len(normal_cases)}")
+
+    # Write boundary cases
+    path = os.path.join(CASES_DIR, "boundary", "boundary_cases.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"cases": boundary_cases, "total": len(boundary_cases), "type": "boundary"}, f, ensure_ascii=False, indent=2)
+    print(f"Boundary cases: {len(boundary_cases)}")
+
+    # Write exception cases
+    path = os.path.join(CASES_DIR, "exception", "exception_cases.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump({"cases": exception_cases, "total": len(exception_cases), "type": "exception"}, f, ensure_ascii=False, indent=2)
+    print(f"Exception cases: {len(exception_cases)}")
+    print("All test cases generated!")

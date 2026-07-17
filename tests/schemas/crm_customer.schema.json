@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CrmCustomerSchema",
+  "description": "倍用心-CRM与客户数据域Schema",
+  "type": "object",
+  "properties": {
+    "customer_info": {
+      "type": "object",
+      "required": ["id", "name", "industry", "contact_person", "phone", "total_orders", "total_amount", "customer_level"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "industry": {"type": "string"},
+        "contact_person": {"type": "string"},
+        "phone": {"type": "string"},
+        "total_orders": {"type": "integer", "minimum": 0},
+        "total_amount": {"type": "number", "minimum": 0},
+        "is_dormant": {"type": "boolean"},
+        "customer_level": {"type": "string", "enum": ["S", "A", "B", "C"]}
+      }
+    },
+    "follow_up_record": {
+      "type": "object",
+      "required": ["customer_code", "customer_name", "sales_person", "follow_up_date", "method", "content", "next_action", "next_date"],
+      "properties": {
+        "customer_code": {"type": "string"},
+        "customer_name": {"type": "string"},
+        "sales_person": {"type": "string"},
+        "follow_up_date": {"type": "string"},
+        "method": {"type": "string", "enum": ["电话", "拜访", "微信", "邮件", "其他"]},
+        "content": {"type": "string"},
+        "next_action": {"type": "string"},
+        "next_date": {"type": "string"}
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "required": ["customer_code", "customer_name", "opportunity_name", "expected_amount", "stage", "probability_pct", "sales_person"],
+      "properties": {
+        "customer_code": {"type": "string"},
+        "customer_name": {"type": "string"},
+        "opportunity_name": {"type": "string"},
+        "expected_amount": {"type": "number", "minimum": 0},
+        "stage": {"type": "string", "enum": ["需求调研", "方案确认", "商务谈判", "合同签订", "已成交", "已关闭"]},
+        "probability_pct": {"type": "integer", "minimum": 0, "maximum": 100},
+        "expected_close": {"type": "string"},
+        "sales_person": {"type": "string"},
+        "created_date": {"type": "string"}
+      }
+    }
+  }
+}

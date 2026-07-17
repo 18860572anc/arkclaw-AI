@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProductionCapacitySchema",
+  "description": "倍用心-生产与进度数据域Schema",
+  "type": "object",
+  "properties": {
+    "warehouse_in_record": {
+      "type": "object",
+      "required": ["order_no", "product", "factory", "line", "planned_qty", "produced_qty", "warehoused_qty", "yield_rate"],
+      "properties": {
+        "order_no": {"type": "string"},
+        "product": {"type": "string"},
+        "factory": {"type": "string"},
+        "line": {"type": "string"},
+        "planned_qty": {"type": "integer", "minimum": 1},
+        "produced_qty": {"type": "integer", "minimum": 0},
+        "warehoused_qty": {"type": "integer", "minimum": 0},
+        "defect_qty": {"type": "integer", "minimum": 0},
+        "yield_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "warehouse_date": {"type": "string"}
+      }
+    },
+    "production_progress": {
+      "type": "object",
+      "required": ["order_no", "product", "total_qty", "completed_qty", "completion_pct", "current_stage"],
+      "properties": {
+        "order_no": {"type": "string"},
+        "product": {"type": "string"},
+        "total_qty": {"type": "integer"},
+        "completed_qty": {"type": "integer"},
+        "completion_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "current_stage": {"type": "string"},
+        "planned_completion": {"type": "string"},
+        "risk": {"type": "string", "enum": ["low", "medium", "high"]}
+      }
+    },
+    "capacity_data": {
+      "type": "object",
+      "required": ["factory", "line", "daily_capacity", "current_load", "status"],
+      "properties": {
+        "factory": {"type": "string"},
+        "line": {"type": "string"},
+        "daily_capacity": {"type": "integer", "minimum": 0},
+        "current_load": {"type": "number", "minimum": 0, "maximum": 1},
+        "available_capacity": {"type": "integer"},
+        "status": {"type": "string", "enum": ["running", "idle", "maintenance", "commissioning"]},
+        "bottleneck": {"type": "string"}
+      }
+    }
+  }
+}

@@ -53,6 +53,8 @@ services:
     container_name: beste-nginx
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./web:/usr/share/nginx/html/web
+      - ./results:/usr/share/nginx/html/results
     ports:
       - "80:80"
     depends_on:
@@ -83,6 +85,39 @@ services:
       sh -c "pip install -q pytest requests pytest-html jsonschema &&
              python /app/scripts/generate_mock_data.py &&
              cd /app/tests && python -m pytest api/ -v --html=/app/results/report.html --self-contained-html"
+    networks:
+      - beste-network
+
+  # 前端 UI 组件测试服务（ui-test profile）
+  ui-test:
+    profiles:
+      - ui-test
+    build:
+      context: .
+      dockerfile: Dockerfile.ui-test
+    container_name: beste-ui-test
+    depends_on:
+      mock-api:
+        condition: service_healthy
+      nginx:
+        condition: service_started
+    volumes:
+      - ./tests:/app/tests
+      - ./scripts:/app/scripts
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - UI_TEST_BASE_URL=http://nginx:80
+      - UI_TEST_TIMEOUT=30000
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    command: >
+      sh -c "
+        python /app/scripts/generate_mock_data.py &&
+        python -m pytest tests/ui/ -v
+        --html=/app/results/ui-report.html --self-contained-html
+        --browser chromium";
+      echo 'UI 测试完成。查看报告: results/ui-report.html'
     networks:
       - beste-network
 

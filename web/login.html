@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>倍斯特 - 登录</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.login-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; width: 400px; }
+.logo { text-align: center; margin-bottom: 32px; }
+.logo h1 { font-size: 24px; color: #1a73e8; }
+.logo p { color: #666; margin-top: 4px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 6px; color: #333; font-weight: 500; font-size: 14px; }
+.form-group input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border-color 0.2s; }
+.form-group input:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,0.15); }
+.form-group .error-message { color: #d93025; font-size: 12px; margin-top: 4px; display: none; }
+.form-group .error-message.visible { display: block; }
+.form-group input.error { border-color: #d93025; }
+.btn { width: 100%; padding: 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background 0.2s; }
+.btn:hover { background: #1557b0; }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+.form-footer { text-align: center; margin-top: 20px; color: #666; font-size: 13px; }
+.form-footer a { color: #1a73e8; text-decoration: none; }
+.form-footer a:hover { text-decoration: underline; }
+.loading { display: inline-block; width: 16px; height: 16px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 6px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.success-message { background: #e6f4ea; color: #137333; padding: 12px; border-radius: 6px; margin-bottom: 20px; display: none; }
+.success-message.visible { display: block; }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <div class="logo">
+    <h1>倍斯特科技</h1>
+    <p>智能制造管理系统</p>
+  </div>
+  <div id="successMessage" class="success-message">登录成功！正在跳转...</div>
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="username">用户名</label>
+      <input type="text" id="username" name="username" placeholder="请输入用户名" autocomplete="username" />
+      <div class="error-message" id="usernameError">请输入用户名</div>
+    </div>
+    <div class="form-group">
+      <label for="password">密码</label>
+      <input type="password" id="password" name="password" placeholder="请输入密码" autocomplete="current-password" />
+      <div class="error-message" id="passwordError">请输入密码</div>
+    </div>
+    <div class="form-group">
+      <label for="remarks">备注</label>
+      <input type="text" id="remarks" name="remarks" placeholder="备注信息（可选）" />
+    </div>
+    <button type="submit" class="btn" id="loginBtn">登 录</button>
+  </form>
+  <div class="form-footer">
+    <a href="/forgot-password">忘记密码？</a> &nbsp;|&nbsp; <a href="/register">注册账号</a>
+  </div>
+</div>
+<script>
+(function() {
+  const form = document.getElementById('loginForm');
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
+  const usernameError = document.getElementById('usernameError');
+  const passwordError = document.getElementById('passwordError');
+  const successMsg = document.getElementById('successMessage');
+  const loginBtn = document.getElementById('loginBtn');
+
+  function clearErrors() {
+    username.classList.remove('error');
+    password.classList.remove('error');
+    usernameError.classList.remove('visible');
+    passwordError.classList.remove('visible');
+  }
+
+  function validate() {
+    clearErrors();
+    let valid = true;
+    if (!username.value.trim()) {
+      username.classList.add('error');
+      usernameError.classList.add('visible');
+      valid = false;
+    }
+    if (!password.value.trim()) {
+      password.classList.add('error');
+      passwordError.classList.add('visible');
+      valid = false;
+    }
+    return valid;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!validate()) return;
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<span class="loading"></span>登录中...';
+    // 模拟登录请求
+    setTimeout(function() {
+      successMsg.classList.add('visible');
+      loginBtn.innerHTML = '<span class="loading"></span>跳转中...';
+      setTimeout(function() {
+        window.location.href = '/web/dashboard.html';
+      }, 800);
+    }, 1000);
+  });
+})();
+</script>
+</body>
+</html>

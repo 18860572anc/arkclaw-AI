@@ -21,6 +21,12 @@ docker-compose.override.yml
 # 测试结果
 results/
 
+# UI 测试截图
+tests/ui/screenshots/
+
+# Web 测试截图
+results/screenshots/
+
 # 向量数据库（可重新生成，不纳入版本控制）
 data/mock/vector-data/*
 

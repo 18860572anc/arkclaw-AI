@@ -14,3 +14,12 @@ jsonschema>=4.18.0
 # Mock API 服务（运行测试需要）
 fastapi>=0.100.0
 uvicorn>=0.20.0
+
+# Web 自动化测试（Playwright）
+playwright>=1.40.0
+allure-pytest>=2.13.0
+
+# === 前端 UI 组件测试（Phase 2）===
+# Playwright 浏览器自动化
+pytest-playwright>=0.5.0
+playwright>=1.48.0

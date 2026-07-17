@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>倍斯特 - 仪表盘</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; }
+.sidebar { position: fixed; left: 0; top: 0; bottom: 0; width: 240px; background: #1a1a2e; color: #fff; padding: 20px 0; }
+.sidebar .logo { padding: 0 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px; }
+.sidebar .logo h2 { font-size: 18px; color: #4fc3f7; }
+.sidebar .nav { list-style: none; }
+.sidebar .nav li { padding: 12px 20px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; color: #b0b0c0; font-size: 14px; }
+.sidebar .nav li:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.sidebar .nav li.active { background: rgba(79,195,247,0.15); color: #4fc3f7; border-right: 3px solid #4fc3f7; }
+.main { margin-left: 240px; padding: 24px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.header h1 { font-size: 22px; color: #333; }
+.header .user-info { display: flex; align-items: center; gap: 12px; color: #666; font-size: 14px; }
+.header .avatar { width: 36px; height: 36px; border-radius: 50%; background: #1a73e8; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.stat-card .label { font-size: 13px; color: #888; margin-bottom: 8px; }
+.stat-card .value { font-size: 28px; font-weight: 700; color: #333; }
+.stat-card .trend { font-size: 12px; margin-top: 4px; }
+.stat-card .trend.up { color: #137333; }
+.stat-card .trend.down { color: #d93025; }
+.chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+.chart-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.chart-card h3 { font-size: 15px; color: #555; margin-bottom: 16px; }
+.chart-placeholder { height: 200px; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #1a73e8; font-size: 14px; }
+.data-table { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.data-table h3 { font-size: 15px; color: #555; margin-bottom: 16px; }
+.data-table table { width: 100%; border-collapse: collapse; }
+.data-table th { padding: 10px 12px; text-align: left; font-weight: 600; color: #555; font-size: 13px; border-bottom: 2px solid #eee; }
+.data-table td { padding: 10px 12px; color: #333; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+.data-table tr:hover td { background: #f8f9ff; }
+.status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+.status-badge.production { background: #e3f2fd; color: #1565c0; }
+.status-badge.pending { background: #fff3e0; color: #e65100; }
+.status-badge.delivered { background: #e8f5e9; color: #2e7d32; }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="logo"><h2>倍斯特科技</h2></div>
+  <ul class="nav">
+    <li class="active" data-nav="dashboard">📊 仪表盘</li>
+    <li data-nav="orders">📋 订单管理</li>
+    <li data-nav="inventory">📦 库存管理</li>
+    <li data-nav="production">🏭 生产管理</li>
+    <li data-nav="agent">🤖 AI 助手</li>
+    <li data-nav="settings">⚙️ 系统设置</li>
+  </ul>
+</div>
+<div class="main">
+  <div class="header">
+    <h1>仪表盘</h1>
+    <div class="user-info">
+      <span id="currentUser">管理员</span>
+      <div class="avatar">管</div>
+    </div>
+  </div>
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card">
+      <div class="label">今日订单数</div>
+      <div class="value" id="statOrders">128</div>
+      <div class="trend up">↑ 12% 较昨日</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">生产完成率</div>
+      <div class="value" id="statProduction">87%</div>
+      <div class="trend up">↑ 3% 较上周</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">库存预警</div>
+      <div class="value" id="statWarnings">5</div>
+      <div class="trend down">↑ 2 较上月</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">月销售额</div>
+      <div class="value" id="statRevenue">¥48.2万</div>
+      <div class="trend up">↑ 8% 较上月</div>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>订单趋势</h3>
+      <div class="chart-placeholder" id="orderChart">📈 订单趋势图表</div>
+    </div>
+    <div class="chart-card">
+      <h3>产品分布</h3>
+      <div class="chart-placeholder" id="productChart">🍩 产品占比</div>
+    </div>
+  </div>
+  <div class="data-table" id="recentOrdersTable">
+    <h3>最近订单</h3>
+    <table>
+      <thead>
+        <tr><th>订单号</th><th>客户</th><th>产品型号</th><th>数量</th><th>状态</th><th>交期</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ORD1001</td><td>客户A</td><td>C200充电宝</td><td>5,000</td><td><span class="status-badge production">生产中</span></td><td>2026-08-15</td></tr>
+        <tr><td>ORD1002</td><td>客户B</td><td>CS12充电柜</td><td>200</td><td><span class="status-badge production">生产中</span></td><td>2026-08-30</td></tr>
+        <tr><td>ORD1003</td><td>客户C</td><td>C100充电宝</td><td>10,000</td><td><span class="status-badge pending">待审核</span></td><td>2026-09-01</td></tr>
+        <tr><td>ORD1004</td><td>客户A</td><td>E50充电桩</td><td>50</td><td><span class="status-badge delivered">已交付</span></td><td>2026-07-10</td></tr>
+        <tr><td>ORD1005</td><td>客户D</td><td>G500储能柜</td><td>10</td><td><span class="status-badge production">生产中</span></td><td>2026-09-15</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+(function() {
+  // 导航菜单交互
+  document.querySelectorAll('.nav li').forEach(function(item) {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.nav li').forEach(function(li) { li.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+  // 模拟数据更新
+  var ordersEl = document.getElementById('statOrders');
+  if (ordersEl) {
+    setInterval(function() {
+      var val = parseInt(ordersEl.textContent);
+      if (Math.random() > 0.7) {
+        ordersEl.textContent = val + Math.floor(Math.random() * 3);
+      }
+    }, 5000);
+  }
+})();
+</script>
+</body>
+</html>

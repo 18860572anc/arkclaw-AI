@@ -60,6 +60,32 @@ services:
     networks:
       - beste-network
 
+  # 测试服务（test profile）
+  test-runner:
+    profiles:
+      - test
+    build:
+      context: .
+      dockerfile: api/Dockerfile.test
+    container_name: beste-test-runner
+    depends_on:
+      mock-api:
+        condition: service_healthy
+    volumes:
+      - ./tests:/app/tests
+      - ./scripts:/app/scripts
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      - MOCK_API_BASE=http://mock-api:3001
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "pip install -q pytest requests pytest-html jsonschema &&
+             python /app/scripts/generate_mock_data.py &&
+             cd /app/tests && python -m pytest api/ -v --html=/app/results/report.html --self-contained-html"
+    networks:
+      - beste-network
+
 networks:
   beste-network:
     driver: bridge

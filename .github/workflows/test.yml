@@ -1,0 +1,53 @@
+name: 接口自动化测试
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装 Python 依赖
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
+          pip install pytest requests pytest-html jsonschema fastapi uvicorn
+
+      - name: 运行数据生成脚本（生成测试数据）
+        run: |
+          python scripts/generate_mock_data.py
+
+      - name: 启动 Mock API 服务
+        run: |
+          cd api && uvicorn mock_api_server:app --host 0.0.0.0 --port 3001 &
+          sleep 3
+          # 等待服务就绪
+          for i in $(seq 1 10); do
+            curl -s http://localhost:3001/health && echo "" && break
+            sleep 2
+          done
+
+      - name: 运行 pytest 接口测试
+        run: |
+          cd tests
+          python -m pytest api/ -v --html=report.html --self-contained-html
+
+      - name: 上传测试报告 artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-test-report
+          path: tests/report.html
+          retention-days: 30

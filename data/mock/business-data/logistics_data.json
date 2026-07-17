@@ -1,0 +1,75 @@
+{
+  "shipping_routes": [
+    {
+      "origin": "深圳",
+      "destination": "洛杉矶",
+      "mode": "海运",
+      "cost_per_kg": 12.5,
+      "cost_per_cbm": 850,
+      "transit_days": 20,
+      "carrier": "中远海运",
+      "min_kg": 100
+    },
+    {
+      "origin": "深圳",
+      "destination": "汉堡",
+      "mode": "海运",
+      "cost_per_kg": 15.0,
+      "cost_per_cbm": 920,
+      "transit_days": 30,
+      "carrier": "马士基",
+      "min_kg": 100
+    },
+    {
+      "origin": "深圳",
+      "destination": "迪拜",
+      "mode": "海运",
+      "cost_per_kg": 10.0,
+      "cost_per_cbm": 700,
+      "transit_days": 15,
+      "carrier": "中远海运",
+      "min_kg": 100
+    },
+    {
+      "origin": "深圳",
+      "destination": "洛杉矶",
+      "mode": "空运",
+      "cost_per_kg": 45.0,
+      "cost_per_cbm": 0,
+      "transit_days": 5,
+      "carrier": "南方航空",
+      "min_kg": 50
+    },
+    {
+      "origin": "深圳",
+      "destination": "东京",
+      "mode": "海运",
+      "cost_per_kg": 8.0,
+      "cost_per_cbm": 550,
+      "transit_days": 7,
+      "carrier": "ONE",
+      "min_kg": 50
+    }
+  ],
+  "quotes": [
+    {
+      "id": "LQ001",
+      "origin": "深圳",
+      "destination": "洛杉矶",
+      "weight_kg": 500,
+      "volume_cbm": 2.5,
+      "shipping_options": {
+        "海运": {
+          "cost": 6250,
+          "transit_days": 20,
+          "carrier": "中远海运"
+        },
+        "空运": {
+          "cost": 22500,
+          "transit_days": 5,
+          "carrier": "南方航空"
+        }
+      }
+    }
+  ]
+}

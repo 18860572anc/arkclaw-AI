@@ -1,0 +1,61 @@
+{
+  "risk_alerts": [
+    {
+      "order_id": "ORD1001",
+      "risk_type": "delivery_delay",
+      "risk_level": "high",
+      "description": "关键物料(锂电池组)交期延迟15天",
+      "impact": "预计延迟到2026-08-30交付",
+      "suggested_action": "启动备选供应商采购"
+    },
+    {
+      "order_id": "ORD1003",
+      "risk_type": "material_shortage",
+      "risk_level": "medium",
+      "description": "PCBA主板库存不足",
+      "impact": "可能影响订单按时齐套",
+      "suggested_action": "加急采购"
+    },
+    {
+      "order_id": "ORD1005",
+      "risk_type": "quality_risk",
+      "risk_level": "low",
+      "description": "新批次USB-C接口抽检合格率下降",
+      "impact": "需要增加来料检验频次",
+      "suggested_action": "加严检验"
+    }
+  ],
+  "order_timelines": [
+    {
+      "order_id": "ORD1002",
+      "stages": [
+        {
+          "stage": "订单确认",
+          "status": "completed",
+          "date": "2026-07-01"
+        },
+        {
+          "stage": "物料齐套",
+          "status": "completed",
+          "date": "2026-07-10"
+        },
+        {
+          "stage": "生产排产",
+          "status": "in_progress",
+          "date": "2026-07-15"
+        },
+        {
+          "stage": "品质检验",
+          "status": "pending",
+          "date": null
+        },
+        {
+          "stage": "包装出货",
+          "status": "pending",
+          "date": null
+        }
+      ],
+      "completion_pct": 40
+    }
+  ]
+}

@@ -63,22 +63,22 @@
     },
     {
       "year": 2020,
-      "event": "进入海外市场，覆盖欧美东南亚"
+      "event": "进入海外市场, 覆盖欧美东南亚"
     },
     {
       "year": 2022,
-      "event": "建立江苏工厂，年产能提升至500万台"
+      "event": "建立江苏工厂, 年产能提升至500万台"
     },
     {
       "year": 2024,
-      "event": "与ArkClaw达成战略合作，启动AI数字化升级"
+      "event": "与ArkClaw达成战略合作, 启动AI数字化升级"
     },
     {
       "year": 2025,
-      "event": "建立广西工厂，拓展新能源电池领域"
+      "event": "建立广西工厂, 拓展新能源电池领域"
     }
   ],
-  "culture": "创新、务实、客户至上",
+  "culture": "创新, 务实, 客户至上",
   "brand_guide": {
     "primary_color": "#1A73E8",
     "secondary_color": "#00C853",
@@ -86,6 +86,6 @@
     "font_title": "思源黑体 Bold",
     "font_body": "思源黑体 Regular",
     "font_en": "Inter",
-    "design_style": "简洁干净、圆角元素、图标化表达"
+    "design_style": "简洁干净, 圆角元素, 图标化表达"
   }
 }

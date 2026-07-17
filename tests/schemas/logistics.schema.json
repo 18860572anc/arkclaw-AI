@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LogisticsSchema",
+  "description": "物流数据Schema",
+  "type": "object",
+  "required": [
+    "shipping_routes"
+  ],
+  "properties": {
+    "shipping_routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "origin",
+          "destination",
+          "mode",
+          "cost_per_kg",
+          "transit_days"
+        ],
+        "properties": {
+          "origin": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "海运",
+              "空运",
+              "陆运",
+              "铁路"
+            ]
+          },
+          "cost_per_kg": {
+            "type": "number",
+            "minimum": 0
+          },
+          "transit_days": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

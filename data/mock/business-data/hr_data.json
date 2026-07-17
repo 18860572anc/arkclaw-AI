@@ -1,0 +1,189 @@
+{
+  "departments": [
+    "销售部",
+    "研发部",
+    "制造中心",
+    "商务部",
+    "管理中心",
+    "财务部",
+    "品质部",
+    "采购部",
+    "人事部"
+  ],
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "张明",
+      "department": "销售部",
+      "position": "销售经理",
+      "kpi_score": 92,
+      "performance_level": "A",
+      "tenure_years": 5,
+      "is_key_talent": true
+    },
+    {
+      "id": "EMP002",
+      "name": "李华",
+      "department": "销售部",
+      "position": "销售主管",
+      "kpi_score": 85,
+      "performance_level": "B+",
+      "tenure_years": 3,
+      "is_key_talent": false
+    },
+    {
+      "id": "EMP003",
+      "name": "王芳",
+      "department": "销售部",
+      "position": "销售代表",
+      "kpi_score": 78,
+      "performance_level": "B",
+      "tenure_years": 1,
+      "is_key_talent": false
+    },
+    {
+      "id": "EMP004",
+      "name": "赵强",
+      "department": "研发部",
+      "position": "高级工程师",
+      "kpi_score": 95,
+      "performance_level": "A",
+      "tenure_years": 8,
+      "is_key_talent": true
+    },
+    {
+      "id": "EMP005",
+      "name": "刘洋",
+      "department": "研发部",
+      "position": "工程师",
+      "kpi_score": 88,
+      "performance_level": "A",
+      "tenure_years": 4,
+      "is_key_talent": true
+    },
+    {
+      "id": "EMP006",
+      "name": "陈静",
+      "department": "研发部",
+      "position": "助理工程师",
+      "kpi_score": 72,
+      "performance_level": "B",
+      "tenure_years": 1,
+      "is_key_talent": false
+    },
+    {
+      "id": "EMP007",
+      "name": "周涛",
+      "department": "制造中心",
+      "position": "生产主管",
+      "kpi_score": 82,
+      "performance_level": "B+",
+      "tenure_years": 6,
+      "is_key_talent": false
+    },
+    {
+      "id": "EMP008",
+      "name": "吴敏",
+      "department": "商务部",
+      "position": "商务经理",
+      "kpi_score": 90,
+      "performance_level": "A",
+      "tenure_years": 4,
+      "is_key_talent": true
+    },
+    {
+      "id": "EMP009",
+      "name": "孙丽",
+      "department": "管理中心",
+      "position": "行政主管",
+      "kpi_score": 80,
+      "performance_level": "B+",
+      "tenure_years": 3,
+      "is_key_talent": false
+    },
+    {
+      "id": "EMP010",
+      "name": "钱伟",
+      "department": "财务部",
+      "position": "财务经理",
+      "kpi_score": 91,
+      "performance_level": "A",
+      "tenure_years": 7,
+      "is_key_talent": true
+    }
+  ],
+  "amoeba_units": [
+    {
+      "unit": "销售部",
+      "period": "2026-06",
+      "revenue": 1200000,
+      "expense": 800000,
+      "value_added": 400000,
+      "headcount": 15,
+      "value_per_hour": 83.3,
+      "improvement": "提高回款速度"
+    },
+    {
+      "unit": "研发部",
+      "period": "2026-06",
+      "revenue": 0,
+      "expense": 350000,
+      "value_added": -350000,
+      "headcount": 12,
+      "value_per_hour": -91.1,
+      "improvement": "加速新产品开发"
+    },
+    {
+      "unit": "制造中心",
+      "period": "2026-06",
+      "revenue": 3000000,
+      "expense": 2500000,
+      "value_added": 500000,
+      "headcount": 80,
+      "value_per_hour": 19.5,
+      "improvement": "提升良品率降低损耗"
+    },
+    {
+      "unit": "管理中心",
+      "period": "2026-06",
+      "revenue": 0,
+      "expense": 200000,
+      "value_added": -200000,
+      "headcount": 10,
+      "value_per_hour": -62.5,
+      "improvement": "优化流程降低管理成本"
+    }
+  ],
+  "culture_activities": [
+    {
+      "id": "ACT001",
+      "period": "2026-Q2",
+      "name": "Q2团队建设活动",
+      "date": "2026-05-20",
+      "participants": 120,
+      "participation_rate": 0.75,
+      "feedback_score": 4.5,
+      "feedback_summary": "员工普遍反映活动增进团队凝聚力"
+    },
+    {
+      "id": "ACT002",
+      "period": "2026-Q2",
+      "name": "安全生产月",
+      "date": "2026-06-10",
+      "participants": 200,
+      "participation_rate": 0.85,
+      "feedback_score": 4.2,
+      "feedback_summary": "提高了员工安全意识"
+    },
+    {
+      "id": "ACT003",
+      "period": "2026-Q2",
+      "name": "技术创新分享会",
+      "date": "2026-06-25",
+      "participants": 50,
+      "participation_rate": 0.6,
+      "feedback_score": 4.8,
+      "feedback_summary": "技术交流氛围浓厚"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "base_prices": {
+    "C100": 65,
+    "C200": 95,
+    "CS12": 2800,
+    "CS24": 4500,
+    "CS36": 6800
+  },
+  "discount_rules": {
+    "A": {
+      "min_qty": 500,
+      "discount_rate": 0.15
+    },
+    "B": {
+      "min_qty": 1000,
+      "discount_rate": 0.1
+    },
+    "C": {
+      "min_qty": 2000,
+      "discount_rate": 0.05
+    }
+  },
+  "quotes": [
+    {
+      "id": "QTE001",
+      "product_id": "C200",
+      "unit_price": 80.75,
+      "qty": 1000,
+      "total": 80750,
+      "discount": 0.15,
+      "valid_until": "2026-08-15",
+      "customer_level": "A"
+    },
+    {
+      "id": "QTE002",
+      "product_id": "CS12",
+      "unit_price": 2520,
+      "qty": 100,
+      "total": 252000,
+      "discount": 0.1,
+      "valid_until": "2026-08-10",
+      "customer_level": "B"
+    }
+  ]
+}

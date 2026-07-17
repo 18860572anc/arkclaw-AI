@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProductionSchema",
+  "description": "生产数据Schema",
+  "type": "object",
+  "required": [
+    "production_lines",
+    "quality_metrics"
+  ],
+  "properties": {
+    "production_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "factory",
+          "capacity_per_day",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "factory": {
+            "type": "string"
+          },
+          "capacity_per_day": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "current_efficiency": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "stopped",
+              "commissioning"
+            ]
+          }
+        }
+      }
+    },
+    "quality_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "period",
+          "yield_rate"
+        ],
+        "properties": {
+          "period": {
+            "type": "string"
+          },
+          "yield_rate": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    }
+  }
+}

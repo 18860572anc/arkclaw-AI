@@ -1,0 +1,95 @@
+{
+  "policies": [
+    {
+      "id": "GOV001",
+      "name": "深圳市新能源产业扶持政策",
+      "region": "深圳",
+      "industry": "新能源",
+      "type": "补贴",
+      "amount": "最高500万元",
+      "requirements": "注册满2年, 年营收>1000万",
+      "deadline": "2026-12-31",
+      "match_score": 0.85
+    },
+    {
+      "id": "GOV002",
+      "name": "国家高新技术企业认定",
+      "region": "全国",
+      "industry": "科技",
+      "type": "资质",
+      "amount": "所得税率15%",
+      "requirements": "研发投入占比>5%, 知识产权>5项",
+      "deadline": "长期有效",
+      "match_score": 0.92
+    },
+    {
+      "id": "GOV003",
+      "name": "广东省制造业数字化转型补贴",
+      "region": "广东",
+      "industry": "制造",
+      "type": "补贴",
+      "amount": "最高200万元",
+      "requirements": "数字化改造投入>100万",
+      "deadline": "2026-09-30",
+      "match_score": 0.78
+    },
+    {
+      "id": "GOV004",
+      "name": "深圳市出口退税优惠",
+      "region": "深圳",
+      "industry": "外贸",
+      "type": "退税",
+      "amount": "退税率13%",
+      "requirements": "出口额>100万美元",
+      "deadline": "长期有效",
+      "match_score": 0.8
+    },
+    {
+      "id": "GOV005",
+      "name": "专精特新中小企业认定",
+      "region": "全国",
+      "industry": "制造",
+      "type": "资质",
+      "amount": "补贴50-100万",
+      "requirements": "专业化, 精细化, 特色化",
+      "deadline": "2026-10-31",
+      "match_score": 0.75
+    }
+  ],
+  "qualifications": {
+    "current": [
+      "ISO9001",
+      "ISO14001",
+      "CE",
+      "FCC",
+      "RoHS",
+      "UN38.3"
+    ],
+    "needed": [
+      "高新技术企业",
+      "专精特新",
+      "ISO13485",
+      "IATF16949"
+    ],
+    "roadmap": [
+      {
+        "year": 2026,
+        "target": "高新技术企业认定",
+        "status": "筹备中",
+        "priority": "高"
+      },
+      {
+        "year": 2027,
+        "target": "专精特新中小企业",
+        "status": "规划中",
+        "priority": "高"
+      },
+      {
+        "year": 2028,
+        "target": "IATF16949认证",
+        "status": "规划中",
+        "priority": "中"
+      }
+    ]
+  }
+}

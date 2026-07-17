@@ -1,0 +1,56 @@
+{
+  "supported_capacities": [
+    "5000mAh",
+    "10000mAh",
+    "20000mAh"
+  ],
+  "supported_colors": [
+    "白色",
+    "黑色",
+    "蓝色",
+    "红色",
+    "渐变"
+  ],
+  "design_templates": [
+    {
+      "id": "OEMT001",
+      "product_type": "充电宝",
+      "capacity": "10000mAh",
+      "estimated_cost": 45,
+      "design_days": 10,
+      "mold_cost": 30000
+    },
+    {
+      "id": "OEMT002",
+      "product_type": "充电宝",
+      "capacity": "20000mAh",
+      "estimated_cost": 75,
+      "design_days": 12,
+      "mold_cost": 35000
+    }
+  ],
+  "schemes": [
+    {
+      "id": "OEMS001",
+      "product_type": "充电宝",
+      "capacity": "10000mAh",
+      "color": "白色",
+      "appearance": "圆角矩形",
+      "dimensions": "140x70x15mm",
+      "weight": "200g",
+      "bom_materials": [
+        "锂电池组18650x4",
+        "PCBA V3.2",
+        "外壳上盖",
+        "外壳底盖",
+        "USB-C接口"
+      ],
+      "estimated_cost": 48.5,
+      "logo_options": [
+        "丝印",
+        "烫金",
+        "UV打印"
+      ]
+    }
+  ]
+}

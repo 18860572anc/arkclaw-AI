@@ -1,0 +1,140 @@
+{
+  "receivables": [
+    {
+      "id": "RCV001",
+      "customer_id": "C1001",
+      "customer_name": "客户A",
+      "amount": 150000,
+      "due_date": "2026-06-15",
+      "days_overdue": 32,
+      "status": "overdue",
+      "collection_phase": "second_reminder"
+    },
+    {
+      "id": "RCV002",
+      "customer_id": "C1002",
+      "customer_name": "客户B",
+      "amount": 85000,
+      "due_date": "2026-07-01",
+      "days_overdue": 16,
+      "status": "overdue",
+      "collection_phase": "first_reminder"
+    },
+    {
+      "id": "RCV003",
+      "customer_id": "C1003",
+      "customer_name": "客户C",
+      "amount": 200000,
+      "due_date": "2026-07-20",
+      "days_overdue": 0,
+      "status": "pending",
+      "collection_phase": "normal"
+    },
+    {
+      "id": "RCV004",
+      "customer_id": "C1004",
+      "customer_name": "客户D",
+      "amount": 50000,
+      "due_date": "2026-05-01",
+      "days_overdue": 77,
+      "status": "overdue",
+      "collection_phase": "legal_warning"
+    }
+  ],
+  "commission_rules": [
+    {
+      "rule_id": "R001",
+      "name": "标准提成",
+      "base_rate": 0.03,
+      "target_bonus_rate": 0.01,
+      "overdue_deduction_rate": 0.005
+    },
+    {
+      "rule_id": "R002",
+      "name": "高额提成",
+      "base_rate": 0.05,
+      "target_bonus_rate": 0.02,
+      "overdue_deduction_rate": 0.01,
+      "min_amount": 500000
+    }
+  ],
+  "commission_records": [
+    {
+      "id": "COM001",
+      "sales_person": "张明",
+      "period": "2026-06",
+      "base_commission": 15000,
+      "bonus": 5000,
+      "deduction": 2000,
+      "net_amount": 18000
+    },
+    {
+      "id": "COM002",
+      "sales_person": "李华",
+      "period": "2026-06",
+      "base_commission": 12000,
+      "bonus": 3000,
+      "deduction": 0,
+      "net_amount": 15000
+    },
+    {
+      "id": "COM003",
+      "sales_person": "王芳",
+      "period": "2026-06",
+      "base_commission": 8000,
+      "bonus": 2000,
+      "deduction": 500,
+      "net_amount": 9500
+    }
+  ],
+  "accounting_subjects": {
+    "资产类": [
+      "银行存款",
+      "应收账款",
+      "库存商品",
+      "固定资产",
+      "预付账款"
+    ],
+    "负债类": [
+      "应付账款",
+      "预收账款",
+      "应交税费",
+      "短期借款"
+    ],
+    "权益类": [
+      "实收资本",
+      "未分配利润",
+      "盈余公积"
+    ],
+    "成本类": [
+      "生产成本",
+      "制造费用",
+      "劳务成本"
+    ],
+    "损益类": [
+      "主营业务收入",
+      "主营业务成本",
+      "管理费用",
+      "销售费用",
+      "财务费用",
+      "税金及附加"
+    ]
+  },
+  "tax_rates": {
+    "VAT": {
+      "rate": 0.13,
+      "filing_frequency": "monthly",
+      "deadline": "次月15日"
+    },
+    "corporate_income_tax": {
+      "rate": 0.25,
+      "filing_frequency": "quarterly",
+      "deadline": "季度结束后15日内"
+    },
+    "stamp_tax": {
+      "rate": 0.0003,
+      "filing_frequency": "monthly",
+      "deadline": "当月最后一日"
+    }
+  }
+}

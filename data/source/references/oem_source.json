@@ -1,0 +1,40 @@
+{
+  "design_standards": {
+    "充电宝": {
+      "wall_thickness": "2.0-2.5mm",
+      "material_options": [
+        "PC+ABS",
+        "ABS",
+        "PC"
+      ],
+      "surface_treatment": [
+        "磨砂",
+        "亮面",
+        "橡胶漆",
+        "UV喷涂"
+      ]
+    },
+    "充电柜": {
+      "material": "SPCC冷轧板+静电喷涂",
+      "thickness": "1.0-1.5mm",
+      "surface_treatment": [
+        "静电喷涂",
+        "拉丝",
+        "烤漆"
+      ]
+    }
+  },
+  "logo_processes": [
+    "丝印",
+    "烫金",
+    "UV打印",
+    "激光雕刻",
+    "模内装饰"
+  ],
+  "packaging_options": [
+    "彩盒",
+    "白盒",
+    "展示盒",
+    "航空箱"
+  ]
+}

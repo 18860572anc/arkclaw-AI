@@ -1,0 +1,57 @@
+{
+  "supported_regions": [
+    "北美",
+    "欧洲",
+    "东南亚",
+    "中东",
+    "南美",
+    "澳洲"
+  ],
+  "delivery_terms": [
+    "FOB深圳",
+    "CIF",
+    "DDP",
+    "EXW",
+    "CFR"
+  ],
+  "price_factors": {
+    "北美": {
+      "multiplier": 1.3,
+      "tariff_rate": 0.075,
+      "shipping_cost_per_unit": 5
+    },
+    "欧洲": {
+      "multiplier": 1.25,
+      "tariff_rate": 0.05,
+      "shipping_cost_per_unit": 6
+    },
+    "东南亚": {
+      "multiplier": 1.1,
+      "tariff_rate": 0.0,
+      "shipping_cost_per_unit": 2
+    },
+    "中东": {
+      "multiplier": 1.2,
+      "tariff_rate": 0.05,
+      "shipping_cost_per_unit": 4
+    }
+  },
+  "overseas_inquiries": [
+    {
+      "id": "INQ001",
+      "region": "北美",
+      "product": "CS12充电柜",
+      "qty": 500,
+      "status": "quoting",
+      "contact_date": "2026-07-10"
+    },
+    {
+      "id": "INQ002",
+      "region": "东南亚",
+      "product": "C200充电宝",
+      "qty": 2000,
+      "status": "negotiation",
+      "contact_date": "2026-07-05"
+    }
+  ]
+}

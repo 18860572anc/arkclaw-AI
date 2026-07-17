@@ -1,0 +1,105 @@
+{
+  "production_lines": [
+    {
+      "id": "PL001",
+      "name": "充电宝产线A",
+      "factory": "江苏工厂",
+      "capacity_per_day": 5000,
+      "current_efficiency": 0.85,
+      "bottleneck": "SMT贴片工序",
+      "status": "running"
+    },
+    {
+      "id": "PL002",
+      "name": "充电柜产线B",
+      "factory": "江苏工厂",
+      "capacity_per_day": 200,
+      "current_efficiency": 0.78,
+      "bottleneck": "组装调试",
+      "status": "running"
+    },
+    {
+      "id": "PL003",
+      "name": "充电宝产线C",
+      "factory": "广西工厂",
+      "capacity_per_day": 3000,
+      "current_efficiency": 0.0,
+      "bottleneck": "设备调试中",
+      "status": "commissioning"
+    }
+  ],
+  "quality_metrics": [
+    {
+      "period": "2026-06",
+      "yield_rate": 0.973,
+      "defect_types": {
+        "外观划伤": 0.008,
+        "充电异常": 0.005,
+        "连接器松动": 0.004,
+        "其他": 0.01
+      },
+      "improvements": [
+        "优化SMT回流焊温度参数",
+        "增加外观检测工位"
+      ]
+    },
+    {
+      "period": "2026-05",
+      "yield_rate": 0.965,
+      "defect_types": {
+        "外观划伤": 0.012,
+        "充电异常": 0.007,
+        "连接器松动": 0.006,
+        "其他": 0.01
+      },
+      "improvements": [
+        "引入自动光学检测"
+      ]
+    }
+  ],
+  "complaints": [
+    {
+      "id": "CP0001",
+      "customer": "客户A",
+      "product": "C200充电宝",
+      "date": "2026-07-01",
+      "description": "充电宝无法为手机充电",
+      "root_cause": "USB-C接口焊接不良",
+      "impact_scope": "批次20260601-20260615生产",
+      "corrective_action": "更换接口模块并全检",
+      "status": "closed"
+    },
+    {
+      "id": "CP0002",
+      "customer": "客户B",
+      "product": "CS12充电柜",
+      "date": "2026-07-10",
+      "description": "充电柜第3槽位无法充电",
+      "root_cause": "待分析",
+      "impact_scope": "待确认",
+      "corrective_action": "待制定",
+      "status": "analyzing"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "SCH001",
+      "period": "2026-07-16",
+      "orders": [
+        "ORD1001",
+        "ORD1002"
+      ],
+      "factory": "江苏工厂",
+      "line_assignments": {
+        "PL001": [
+          "ORD1001"
+        ],
+        "PL002": [
+          "ORD1002"
+        ]
+      },
+      "estimated_start": "2026-07-18",
+      "estimated_complete": "2026-08-15"
+    }
+  ]
+}

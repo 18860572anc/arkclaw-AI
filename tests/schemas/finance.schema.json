@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FinanceSchema",
+  "description": "财务数据Schema",
+  "type": "object",
+  "required": [
+    "receivables",
+    "commission_records"
+  ],
+  "properties": {
+    "receivables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "customer_name",
+          "amount",
+          "due_date",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "customer_name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "days_overdue": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "overdue",
+              "pending",
+              "paid"
+            ]
+          }
+        }
+      }
+    },
+    "commission_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sales_person",
+          "period",
+          "net_amount"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "sales_person": {
+            "type": "string"
+          },
+          "net_amount": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HRSchema",
+  "description": "人事数据Schema",
+  "type": "object",
+  "required": [
+    "employees",
+    "departments"
+  ],
+  "properties": {
+    "employees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "department",
+          "kpi_score"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "kpi_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "performance_level": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B+",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          "is_key_talent": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

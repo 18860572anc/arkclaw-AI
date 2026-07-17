@@ -1,0 +1,82 @@
+{
+  "categories": [
+    "产品图",
+    "应用场景图",
+    "包装图",
+    "宣传素材"
+  ],
+  "images": [
+    {
+      "id": "IMG001",
+      "name": "C100充电宝正面",
+      "category": "产品图",
+      "tags": [
+        "C100",
+        "充电宝",
+        "正面"
+      ],
+      "url": "/images/products/C100_front.jpg"
+    },
+    {
+      "id": "IMG002",
+      "name": "C200充电宝正面",
+      "category": "产品图",
+      "tags": [
+        "C200",
+        "充电宝",
+        "正面"
+      ],
+      "url": "/images/products/C200_front.jpg"
+    },
+    {
+      "id": "IMG003",
+      "name": "CS12充电柜全景",
+      "category": "产品图",
+      "tags": [
+        "CS12",
+        "充电柜"
+      ],
+      "url": "/images/products/CS12_full.jpg"
+    },
+    {
+      "id": "IMG004",
+      "name": "CS24充电柜全景",
+      "category": "产品图",
+      "tags": [
+        "CS24",
+        "充电柜"
+      ],
+      "url": "/images/products/CS24_full.jpg"
+    },
+    {
+      "id": "IMG005",
+      "name": "商场应用场景",
+      "category": "应用场景图",
+      "tags": [
+        "商场",
+        "应用"
+      ],
+      "url": "/images/scenes/mall.jpg"
+    },
+    {
+      "id": "IMG006",
+      "name": "机场应用场景",
+      "category": "应用场景图",
+      "tags": [
+        "机场",
+        "应用"
+      ],
+      "url": "/images/scenes/airport.jpg"
+    },
+    {
+      "id": "IMG007",
+      "name": "C100包装盒",
+      "category": "包装图",
+      "tags": [
+        "C100",
+        "包装"
+      ],
+      "url": "/images/packages/C100_box.jpg"
+    }
+  ]
+}

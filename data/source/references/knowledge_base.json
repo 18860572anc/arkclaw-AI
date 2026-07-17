@@ -1,0 +1,65 @@
+{
+  "knowledge_base": [
+    {
+      "id": "KB001",
+      "category": "结构设计",
+      "question": "外壳壁厚应该设计多少?",
+      "answer": "ABS/PC+ABS材质壁厚推荐2.0-2.5mm, PP材质推荐2.5-3.0mm."
+    },
+    {
+      "id": "KB002",
+      "category": "电路设计",
+      "question": "USB-C接口的焊接温度?",
+      "answer": "回流焊峰值温度245度, 波峰焊温度260度."
+    },
+    {
+      "id": "KB003",
+      "category": "电池",
+      "question": "18650电池的配对要求?",
+      "answer": "同一电池组内电芯容量差<=1%, 内阻差<=5mOhm, 电压差<=10mV."
+    },
+    {
+      "id": "KB004",
+      "category": "认证",
+      "question": "产品出口美国需要哪些认证?",
+      "answer": "FCC, UL, UN38.3."
+    },
+    {
+      "id": "KB005",
+      "category": "品质",
+      "question": "AQL抽样标准是什么?",
+      "answer": "AQL=0.65, 正常检验水平II, 一次抽样方案."
+    },
+    {
+      "id": "KB006",
+      "category": "模具",
+      "question": "模具保养周期?",
+      "answer": "每生产5000次后进行一级保养, 每20000次后进行二级保养."
+    },
+    {
+      "id": "KB007",
+      "category": "测试",
+      "question": "充电宝过充保护测试要求?",
+      "answer": "过充保护电压4.35V, 恢复电压4.15V."
+    },
+    {
+      "id": "KB008",
+      "category": "物料",
+      "question": "PCBA板材的常用厚度?",
+      "answer": "常用1.6mm, 可根据需求定制0.8mm/1.0mm/2.0mm."
+    },
+    {
+      "id": "KB009",
+      "category": "工艺",
+      "question": "SMT贴片精度要求?",
+      "answer": "CHIP元件精度+/-0.1mm, IC精度+/-0.05mm."
+    },
+    {
+      "id": "KB010",
+      "category": "销售",
+      "question": "最小起订量MOQ是多少?",
+      "answer": "标准产品MOQ为100台, 定制产品MOQ为500台."
+    }
+  ],
+  "total": 10
+}

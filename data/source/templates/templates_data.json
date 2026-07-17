@@ -3,50 +3,50 @@
     {
       "type": "greeting",
       "tone": "formal",
-      "text": "您好！欢迎咨询倍斯特，请问有什么可以帮您？"
+      "text": "您好! 欢迎咨询倍斯特, 请问有什么可以帮您?"
     },
     {
       "type": "greeting",
       "tone": "casual",
-      "text": "嗨！感谢关注倍斯特，有什么需要了解的？"
+      "text": "嗨! 感谢关注倍斯特, 有什么需要了解的?"
     },
     {
       "type": "apology",
-      "text": "非常抱歉给您带来不便，我们正在为您加急处理，预计{time}内回复。"
+      "text": "非常抱歉给您带来不便, 我们正在为您加急处理, 预计{time}内回复."
     },
     {
       "type": "escalation",
-      "text": "这个问题我需要转给技术支持同事处理，请稍等，他们会尽快联系您。"
+      "text": "这个问题我需要转给技术支持同事处理, 请稍等, 他们会尽快联系您."
     },
     {
       "type": "closing",
-      "text": "感谢您的咨询，如有其他问题随时联系我们！祝您生活愉快！"
+      "text": "感谢您的咨询, 如有其他问题随时联系我们! 祝您生活愉快!"
     },
     {
       "type": "price_objection",
-      "text": "我理解您对价格的关注。其实我们的产品采用{feature}技术，相比竞品在{advantage}方面有明显优势，长期来看性价比更高。"
+      "text": "我理解您对价格的关注. 其实我们的产品采用{feature}技术, 相比竞品在{advantage}方面有明显优势, 长期来看性价比更高."
     }
   ],
   "sales_tips": [
     {
       "scenario": "客户犹豫不决",
-      "tip": "使用二选一法则：'您看是选择标准款还是升级款？' 而不是 '您要不要？'"
+      "tip": "使用二选一法则: 您看是选择标准款还是升级款? 而不是您要不要?"
     },
     {
       "scenario": "客户拒绝",
-      "tip": "先认可再引导：'我理解您的顾虑，其实很多客户一开始也有同样的担心，后来发现...'"
+      "tip": "先认可再引导: 我理解您的顾虑, 其实很多客户一开始也有同样的担心, 后来发现..."
     },
     {
       "scenario": "价格异议",
-      "tip": "价值重构：将价格分解到每天/每次使用，突出长期价值"
+      "tip": "价值重构: 将价格分解到每天/每次使用, 突出长期价值"
     },
     {
       "scenario": "客户沉默",
-      "tip": "抛出开放式问题：'您目前在充电宝使用上遇到的最大痛点是什么？'"
+      "tip": "抛出开放式问题: 您目前在充电宝使用上遇到的最大痛点是什么?"
     },
     {
       "scenario": "竞品对比",
-      "tip": "差异化定位：'我们的优势在于{advantage}，这是竞品不具备的。'"
+      "tip": "差异化定位: 我们的优势在于{advantage}, 这是竞品不具备的."
     }
   ],
   "customer_forms": {
@@ -89,12 +89,17 @@
     {
       "type": "first_contact",
       "subject": "Introduction - Beste Power Bank Solutions",
-      "body": "Dear {customer_name},\n\nWe are Beste, a leading manufacturer of power bank and charging station solutions...\n\nBest regards,\n{sales_name}"
+      "body": "Dear {customer_name}, We are Beste, a leading manufacturer of power bank and charging station solutions..."
     },
     {
       "type": "quote",
       "subject": "Quotation for {product_name}",
-      "body": "Dear {customer_name},\n\nPlease find attached the quotation for {product_name}...\n\nBest regards,\n{sales_name}"
+      "body": "Dear {customer_name}, Please find attached the quotation for {product_name}..."
+    },
+    {
+      "type": "overseas_quote",
+      "subject": "Overseas Quotation - {product_name}",
+      "body": "Dear {customer_name}, Thank you for your interest in our products. Please find the FOB quotation below..."
     }
   ]
 }

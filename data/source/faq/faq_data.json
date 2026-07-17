@@ -1,8 +1,8 @@
 {
   "faq": [
     {
-      "question": "产品保修期多久？",
-      "answer": "标准保修期为12个月，从发货之日起计算。可延长至24个月（需额外购买延长保修服务）。",
+      "question": "产品保修期多久?",
+      "answer": "标准保修期为12个月, 从发货之日起计算. 可延长至24个月.",
       "category": "after_sale",
       "tags": [
         "保修",
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "question": "充电宝无法开机怎么办？",
+      "question": "充电宝无法开机怎么办?",
       "answer": "1.检查电源连接 2.确认电池电量 3.长按复位键10秒 4.如仍无法开机请联系技术支持",
       "category": "tech",
       "tags": [
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "question": "充电速度慢的原因？",
+      "question": "充电速度慢的原因?",
       "answer": "1.检查充电线缆是否完好 2.确认设备温度是否过高 3.检查输出端口是否清洁",
       "category": "tech",
       "tags": [
@@ -28,8 +28,8 @@
       ]
     },
     {
-      "question": "产品防水等级是多少？",
-      "answer": "标准产品防水等级为IPX4，可防溅水。如需更高防水等级可定制（最高IPX7）。",
+      "question": "产品防水等级是多少?",
+      "answer": "标准产品防水等级为IPX4, 可防溅水. 如需更高防水等级可定制.",
       "category": "product",
       "tags": [
         "防水",
@@ -37,8 +37,8 @@
       ]
     },
     {
-      "question": "支持哪些充电协议？",
-      "answer": "支持QC3.0、PD3.0、AFC、FCP等主流快充协议",
+      "question": "支持哪些充电协议?",
+      "answer": "支持QC3.0, PD3.0, AFC, FCP等主流快充协议",
       "category": "product",
       "tags": [
         "快充",
@@ -46,8 +46,8 @@
       ]
     },
     {
-      "question": "最小起订量是多少？",
-      "answer": "标准产品MOQ为100台，定制产品MOQ为500台",
+      "question": "最小起订量是多少?",
+      "answer": "标准产品MOQ为100台, 定制产品MOQ为500台",
       "category": "sales",
       "tags": [
         "MOQ",
@@ -55,8 +55,8 @@
       ]
     },
     {
-      "question": "定制产品需要多长时间？",
-      "answer": "ODM定制周期一般为45-60天，含设计评审、开模、打样、试产、量产",
+      "question": "定制产品需要多长时间?",
+      "answer": "ODM定制周期一般为45-60天, 含设计评审, 开模, 打样, 试产, 量产",
       "category": "sales",
       "tags": [
         "定制",
@@ -64,8 +64,8 @@
       ]
     },
     {
-      "question": "海外订单如何发货？",
-      "answer": "支持FOB深圳、CIF主要港口、DDP等多种贸易条款，海运周期约20-35天",
+      "question": "海外订单如何发货?",
+      "answer": "支持FOB深圳, CIF主要港口, DDP等多种贸易条款, 海运周期约20-35天",
       "category": "sales",
       "tags": [
         "海外",
@@ -73,8 +73,8 @@
       ]
     },
     {
-      "question": "充电柜的安装要求？",
-      "answer": "需AC 220V电源，接地良好，安装环境温度0-40°C，避免阳光直射和潮湿环境",
+      "question": "充电柜的安装要求?",
+      "answer": "需AC 220V电源, 接地良好, 安装环境温度0-40度, 避免阳光直射和潮湿环境",
       "category": "tech",
       "tags": [
         "安装",
@@ -82,8 +82,8 @@
       ]
     },
     {
-      "question": "产品通过哪些认证？",
-      "answer": "CE、FCC、RoHS、UN38.3（电池安全认证）",
+      "question": "产品通过哪些认证?",
+      "answer": "CE, FCC, RoHS, UN38.3",
       "category": "product",
       "tags": [
         "认证",

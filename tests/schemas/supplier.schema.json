@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SupplierSchema",
+  "description": "供应商数据Schema",
+  "type": "object",
+  "required": [
+    "suppliers"
+  ],
+  "properties": {
+    "suppliers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "rating",
+          "delivery_punctuality"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "delivery_punctuality": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "price_level": {
+            "type": "string",
+            "enum": [
+              "低",
+              "中等",
+              "偏高",
+              "高"
+            ]
+          },
+          "cooperation_years": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

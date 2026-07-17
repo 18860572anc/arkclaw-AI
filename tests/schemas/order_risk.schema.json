@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrderRiskSchema",
+  "description": "订单风险数据Schema",
+  "type": "object",
+  "required": [
+    "risk_alerts"
+  ],
+  "properties": {
+    "risk_alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "order_id",
+          "risk_type",
+          "risk_level"
+        ],
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "risk_type": {
+            "type": "string",
+            "enum": [
+              "delivery_delay",
+              "material_shortage",
+              "quality_risk"
+            ]
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
